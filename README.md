@@ -15,10 +15,12 @@ Press the help button.
 
 ### Running the script:
 
-put the file in either  
-...\vegas install folder\Script Menu  
-or  
-...\documents\Vegas Script Menu  
+Put the file in either one of these locations, you'll have to create a folder if it doesn't exist yet  
+C:\Users\...\Documents\Vegas Application Extensions\  
+C:\Users\...\AppData\Local\Vegas Pro\Application Extensions\  
+C:\Users\...\AppData\Roaming\Vegas Pro\Application Extensions\  
+C:\Program Data\Vegas Pro\Application Extensions\
+
 Tools -> Scripting -> Rescan Script Menu Folder -> click on the script name  
 You can also add it to the toolbar in Options -> Customize Toolbar
 
@@ -30,7 +32,8 @@ The script `CustomFades.dll` is created in \bin\debug\
 
 ### References:
 
-Project -> Add reference -> Browse -> Your VEGAS install folder -> `ScriptPortal.Vegas.dll` or `Sony.Vegas.dll`
+Project -> Add reference -> Browse -> Your VEGAS install folder  
+-> `ScriptPortal.Vegas.dll` or `Sony.Vegas.dll`
 
 ### Known bugs:
 
