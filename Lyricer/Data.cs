@@ -12,10 +12,6 @@ namespace Lyricer
     {
         public static Vegas Vegas { get; set; }
         public static Control MainForm { get; set; }
-        public static int tab0 { get; set; }
-        public static int tab1 { get; set; }
-        public static int tab2 { get; set; }
-        public static int tab3 { get; set; }
 
         public Data(Vegas vegas, Control mainForm)
         {
