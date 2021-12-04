@@ -7,13 +7,13 @@ namespace Lyricer
 {
     public class Methods
     {
-        private Vegas Vegas;
+        //private Vegas Vegas;
         //public static FileStream LogStream;
         //public static StreamWriter LogWriter;
-        public Methods(Vegas vegas)
-        {
-            Vegas = vegas;
-        }
+        //public Methods(Vegas vegas)
+        //{
+        //    Vegas = vegas;
+        //}
 
         /// <summary>
         /// Get selected TrackEvents from the timeline
@@ -57,7 +57,7 @@ namespace Lyricer
         /// Setting parameters
         /// </summary>
 
-        /// TODO: figure out how to make this Generic
+        /// TODO: figure out how to make this shit generic
         // Did not work as expected:
         // - SetParameter<T>(...)
         // - where T : OFXParameter<T, OFXKeyframe<T>>

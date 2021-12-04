@@ -13,19 +13,17 @@ namespace Lyricer
     public partial class MainForm : UserControl
     {
         Vegas myVegas;
-        Methods methods;
         Random random;
         public MainForm(Vegas vegas)
         {
-            myVegas = vegas;
-            methods = new Methods(vegas);
+            myVegas = Data.Vegas = vegas;
+            random = new Random();
             InitializeComponent();
         }
 
         /// <summary>
         /// Event Handlers
         /// </summary>
-
         // Automatically count the number of tracks on myVegas.TrackCountChanged
         public void HandleTrackCountChange(object sender, EventArgs e)
         {
