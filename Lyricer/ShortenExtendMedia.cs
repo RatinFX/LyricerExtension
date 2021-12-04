@@ -13,15 +13,11 @@ namespace Lyricer
 {
     public partial class ShortenExtendMedia : UserControl
     {
-        public long ShortenLength;
-        public string ShortenTimecode;
-
-        public long ExtendLength;
-        public string ExtendTimecode;
+        public long ShortenLength = 0;
+        public long ExtendLength = 0;
         public ShortenExtendMedia()
         {
             InitializeComponent();
-            nudShorten.Select();
         }
 
         private void lblShortenExtendMediaAbout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -32,11 +28,7 @@ namespace Lyricer
         private void btnRun_Click(object sender, EventArgs e)
         {
             ShortenLength = (long)nudShorten.Value;
-            ShortenTimecode = cbShortenTimecode.Text;
-
             ExtendLength = (long)nudExtend.Value;
-            ExtendTimecode = cbExtendTimecode.Text;
-
             using (UndoBlock undo = new UndoBlock(""))
             {
                 // try catch for safety
@@ -47,7 +39,7 @@ namespace Lyricer
                     foreach (TrackEvent trackEvent in selectedEvents)
                     {
                         // decrease length of the selected media
-                        switch (ShortenTimecode)
+                        switch (cbShortenTimecode.Text)
                         {
                             case "Frames":
                                 trackEvent.Length = Timecode.FromFrames(trackEvent.Length.FrameCount - ShortenLength);
@@ -66,7 +58,7 @@ namespace Lyricer
                         }
 
                         // increase length of the selected media
-                        switch (ExtendTimecode)
+                        switch (cbExtendTimecode.Text)
                         {
                             case "Frames":
                                 trackEvent.Length = Timecode.FromFrames(trackEvent.Length.FrameCount + ExtendLength);

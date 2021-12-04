@@ -63,6 +63,11 @@
             // 
             this.nudExtend.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudExtend.Location = new System.Drawing.Point(73, 18);
+            this.nudExtend.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.nudExtend.Name = "nudExtend";
             this.nudExtend.Size = new System.Drawing.Size(86, 23);
             this.nudExtend.TabIndex = 2;
@@ -131,6 +136,11 @@
             // 
             this.nudShorten.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudShorten.Location = new System.Drawing.Point(73, 18);
+            this.nudShorten.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.nudShorten.Name = "nudShorten";
             this.nudShorten.Size = new System.Drawing.Size(86, 23);
             this.nudShorten.TabIndex = 0;
