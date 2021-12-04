@@ -29,15 +29,16 @@ namespace Lyricer
         {
             ShortenLength = (long)nudShorten.Value;
             ExtendLength = (long)nudExtend.Value;
-            using (UndoBlock undo = new UndoBlock(""))
+            using (UndoBlock undo = new UndoBlock($"Shorten Extend Media: {ShortenLength} {cbShortenTimecode.Text} & {ExtendLength} {cbExtendTimecode.Text}"))
             {
-                // try catch for safety
                 try
                 {
                     List<TrackEvent> selectedEvents = Methods.GetSelectedEvents(Data.Vegas.Project.Tracks);
 
                     foreach (TrackEvent trackEvent in selectedEvents)
                     {
+                        var tempFadeInLength = trackEvent.FadeIn.Length;
+                        var tempFadeOutLength = trackEvent.FadeOut.Length;
                         // decrease length of the selected media
                         switch (cbShortenTimecode.Text)
                         {
@@ -52,7 +53,7 @@ namespace Lyricer
                                 }
                                 break;
                             default:
-                                // Default is "Frames".
+                                // Default is "Frames"
                                 trackEvent.Length = Timecode.FromFrames(trackEvent.Length.FrameCount - ShortenLength);
                                 break;
                         }
@@ -68,10 +69,12 @@ namespace Lyricer
                                 trackEvent.Length = Timecode.FromSeconds(trackEvent.Length.FrameCount / trackEvent.Length.FrameRate + ExtendLength);
                                 break;
                             default:
-                                // Default is "Frames".
+                                // Default is "Frames"
                                 trackEvent.Length = Timecode.FromFrames(trackEvent.Length.FrameCount + ExtendLength);
                                 break;
                         }
+                        trackEvent.FadeIn.Length = tempFadeInLength;
+                        trackEvent.FadeOut.Length = tempFadeOutLength;
                     }
                 }
                 catch (Exception ex)
@@ -85,9 +88,9 @@ namespace Lyricer
         private void btnHelp_Click(object sender, EventArgs e)
         {
             MessageBox.Show("- - - - - - - - - - - What can you do? - - - - - - - - - - -" + "\n\n" +
-                            "> Decreasing the length of the selected objects (Shorten)" + "\n\n" +
-                            "> Increase the length of the selected objects (Extend)" + "\n\n" +
-                            "(!) If you change the duration like this," + "\n" +
+                            "> Decreasing the length of the selected objects (Shorten)"    + "\n\n" +
+                            "> Increase the length of the selected objects (Extend)"       + "\n\n" +
+                            "(!) If you change the duration like this,"                    + "\n" +
                             "    the Composite/FX Keyframes will NOT move.", "help?", MessageBoxButtons.OK);
         }
     }

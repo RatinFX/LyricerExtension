@@ -62,21 +62,22 @@
             // nudExtend
             // 
             this.nudExtend.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudExtend.Location = new System.Drawing.Point(73, 18);
+            this.nudExtend.Location = new System.Drawing.Point(68, 18);
+            this.nudExtend.Margin = new System.Windows.Forms.Padding(3, 3, 8, 3);
             this.nudExtend.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.nudExtend.Name = "nudExtend";
-            this.nudExtend.Size = new System.Drawing.Size(86, 23);
+            this.nudExtend.Size = new System.Drawing.Size(81, 23);
             this.nudExtend.TabIndex = 2;
             // 
             // lblExtendLength
             // 
             this.lblExtendLength.AutoSize = true;
             this.lblExtendLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExtendLength.Location = new System.Drawing.Point(11, 20);
+            this.lblExtendLength.Location = new System.Drawing.Point(6, 20);
             this.lblExtendLength.Name = "lblExtendLength";
             this.lblExtendLength.Size = new System.Drawing.Size(56, 17);
             this.lblExtendLength.TabIndex = 0;
@@ -89,10 +90,10 @@
             this.cbExtendTimecode.Items.AddRange(new object[] {
             "Frames",
             "Seconds"});
-            this.cbExtendTimecode.Location = new System.Drawing.Point(166, 17);
-            this.cbExtendTimecode.Margin = new System.Windows.Forms.Padding(4);
+            this.cbExtendTimecode.Location = new System.Drawing.Point(161, 17);
+            this.cbExtendTimecode.Margin = new System.Windows.Forms.Padding(4, 4, 8, 4);
             this.cbExtendTimecode.Name = "cbExtendTimecode";
-            this.cbExtendTimecode.Size = new System.Drawing.Size(98, 24);
+            this.cbExtendTimecode.Size = new System.Drawing.Size(105, 24);
             this.cbExtendTimecode.TabIndex = 3;
             this.cbExtendTimecode.Text = "Frames";
             // 
@@ -135,21 +136,22 @@
             // nudShorten
             // 
             this.nudShorten.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudShorten.Location = new System.Drawing.Point(73, 18);
+            this.nudShorten.Location = new System.Drawing.Point(68, 18);
+            this.nudShorten.Margin = new System.Windows.Forms.Padding(3, 3, 8, 3);
             this.nudShorten.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.nudShorten.Name = "nudShorten";
-            this.nudShorten.Size = new System.Drawing.Size(86, 23);
+            this.nudShorten.Size = new System.Drawing.Size(81, 23);
             this.nudShorten.TabIndex = 0;
             // 
             // lblShortenLength
             // 
             this.lblShortenLength.AutoSize = true;
             this.lblShortenLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShortenLength.Location = new System.Drawing.Point(11, 20);
+            this.lblShortenLength.Location = new System.Drawing.Point(6, 20);
             this.lblShortenLength.Name = "lblShortenLength";
             this.lblShortenLength.Size = new System.Drawing.Size(56, 17);
             this.lblShortenLength.TabIndex = 0;
@@ -162,10 +164,10 @@
             this.cbShortenTimecode.Items.AddRange(new object[] {
             "Frames",
             "Seconds"});
-            this.cbShortenTimecode.Location = new System.Drawing.Point(166, 17);
-            this.cbShortenTimecode.Margin = new System.Windows.Forms.Padding(4);
+            this.cbShortenTimecode.Location = new System.Drawing.Point(161, 17);
+            this.cbShortenTimecode.Margin = new System.Windows.Forms.Padding(4, 4, 8, 4);
             this.cbShortenTimecode.Name = "cbShortenTimecode";
-            this.cbShortenTimecode.Size = new System.Drawing.Size(98, 24);
+            this.cbShortenTimecode.Size = new System.Drawing.Size(105, 24);
             this.cbShortenTimecode.TabIndex = 1;
             this.cbShortenTimecode.Text = "Frames";
             // 
