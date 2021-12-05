@@ -39,6 +39,7 @@ namespace Lyricer
                     {
                         var tempFadeInLength = trackEvent.FadeIn.Length;
                         var tempFadeOutLength = trackEvent.FadeOut.Length;
+
                         // decrease length of the selected media
                         switch (cbShortenTimecode.Text)
                         {
@@ -46,11 +47,9 @@ namespace Lyricer
                                 trackEvent.Length = Timecode.FromFrames(trackEvent.Length.FrameCount - ShortenLength);
                                 break;
                             case "Seconds":
-                                if (trackEvent.Length >= Timecode.FromSeconds(ShortenLength))
-                                {
-                                    // shorten e.g.: 600 frame / 60 fps (-> 10sec) - x sec
-                                    trackEvent.Length = Timecode.FromSeconds(trackEvent.Length.FrameCount / trackEvent.Length.FrameRate - ShortenLength);
-                                }
+                                if (trackEvent.Length < Timecode.FromSeconds(ShortenLength)) break;
+                                // shorten e.g.: 600 frame / 60 fps (-> 10sec) - x sec
+                                trackEvent.Length = Timecode.FromSeconds(trackEvent.Length.FrameCount / trackEvent.Length.FrameRate - ShortenLength);
                                 break;
                             default:
                                 // Default is "Frames"

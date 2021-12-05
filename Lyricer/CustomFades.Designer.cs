@@ -93,7 +93,6 @@
             this.FadeOutGroup.Controls.Add(this.cbFadeOutCurve);
             this.FadeOutGroup.Controls.Add(this.cbxChangeFadeOutCurveType);
             this.FadeOutGroup.Controls.Add(this.cbFadeOutTimecode);
-            this.FadeOutGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.FadeOutGroup.Location = new System.Drawing.Point(10, 165);
             this.FadeOutGroup.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.FadeOutGroup.Name = "FadeOutGroup";
@@ -241,7 +240,6 @@
             this.FadeInGroup.Controls.Add(this.cbFadeInCurve);
             this.FadeInGroup.Controls.Add(this.cbFadeInTimecode);
             this.FadeInGroup.Controls.Add(this.cbxChangeFadeInCurveType);
-            this.FadeInGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.FadeInGroup.Location = new System.Drawing.Point(10, 33);
             this.FadeInGroup.Margin = new System.Windows.Forms.Padding(10, 10, 3, 3);
             this.FadeInGroup.Name = "FadeInGroup";

@@ -7,13 +7,8 @@ namespace Lyricer
 {
     public class Methods
     {
-        //private Vegas Vegas;
         //public static FileStream LogStream;
         //public static StreamWriter LogWriter;
-        //public Methods(Vegas vegas)
-        //{
-        //    Vegas = vegas;
-        //}
 
         /// <summary>
         /// Get selected TrackEvents from the timeline

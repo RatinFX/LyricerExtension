@@ -11,7 +11,8 @@ namespace Lyricer
 {
     public class LyricerDockControl : DockableControl
     {
-        private MainForm form = null;
+        private MainForm mainForm = null;
+        private EaseAutomator easer = null;
 
         public LyricerDockControl() : base("ILyricer")
         {
@@ -31,22 +32,24 @@ namespace Lyricer
 
         protected override void OnLoad(EventArgs e)
         {
-            form = new MainForm(myVegas)
+            mainForm = new MainForm(myVegas)
             {
                 Dock = DockStyle.Fill
             };
-            Controls.Add(form);
-            myVegas.TrackCountChanged += form.HandleTrackCountChange;
+
+            Controls.Add(mainForm);
+            myVegas.TrackCountChanged += mainForm.HandleTrackCountChange;
+            myVegas.TrackEventStateChanged += mainForm.HandleTrackEventStateChanged;
         }
 
         protected override void OnClosed(EventArgs args)
         {
-            myVegas.TrackCountChanged -= form.HandleTrackCountChange;
+            myVegas.TrackCountChanged -= mainForm.HandleTrackCountChange;
+            myVegas.TrackEventStateChanged -= mainForm.HandleTrackEventStateChanged;
 
             base.OnClosed(args);
         }
     }
-
 }
 
 /// <summary>
@@ -84,11 +87,12 @@ public class CustomCommandModule : ICustomCommandModule
         if (!myVegas.ActivateDockView("ILyricer"))
         {
             // create the new DockableControl
-            Lyricer.LyricerDockControl Dock = new Lyricer.LyricerDockControl();
-            Dock.AutoLoadCommand = CCM;
-
-            // keeps it open all the time + reload on Vegas reload
-            Dock.PersistDockWindowState = true;
+            Lyricer.LyricerDockControl Dock = new Lyricer.LyricerDockControl
+            {
+                AutoLoadCommand = CCM,
+                // keeps it open all the time + reload on Vegas reload
+                PersistDockWindowState = true
+            };
             myVegas.LoadDockView(Dock);
         }
     }

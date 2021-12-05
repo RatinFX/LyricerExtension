@@ -12,11 +12,11 @@ namespace Lyricer
 {
     public partial class MainForm : UserControl
     {
-        Vegas myVegas;
+        //Vegas myVegas;
         Random random;
         public MainForm(Vegas vegas)
         {
-            myVegas = Data.Vegas = vegas;
+            Data.Vegas = vegas;
             random = new Random();
             InitializeComponent();
         }
@@ -31,20 +31,28 @@ namespace Lyricer
         }
 
         /// <summary>
-        /// Local methods
+        /// Let the appropriate tab deal with Handling the changes
+        /// </summary>
+        public void HandleTrackEventStateChanged(object sender, EventArgs e)
+        {
+            easeAutomator.HandleTrackEventStateChanged(sender, e);
+        }
+
+        /// <summary>
+        /// Get the number of tracks
         /// </summary>
         public void CountTracks()
         {
             int vidTracks = 0;
             int audTracks = 0;
 
-            foreach (Track track in myVegas.Project.Tracks)
+            foreach (Track track in Data.Vegas.Project.Tracks)
             {
                 if (track.IsVideo()) vidTracks++;
                 else audTracks++;
             }
 
-            lblTracks.Text = $"Tracks: {myVegas.Project.Tracks.Count}";
+            lblTracks.Text = $"Tracks: {Data.Vegas.Project.Tracks.Count}";
             lblVideo.Text = $"Video tracks: {vidTracks}";
             lblAudio.Text = $"Audio tracks: {audTracks}";
         }
@@ -62,19 +70,24 @@ namespace Lyricer
             {
                 // video track
                 Track videoTrack = new VideoTrack(location, trackName);
-                myVegas.Project.Tracks.Add(videoTrack);
+                Data.Vegas.Project.Tracks.Add(videoTrack);
             }
             else
             {
                 // audio track
                 Track audioTrack = new AudioTrack(location, trackName);
-                myVegas.Project.Tracks.Add(audioTrack);
+                Data.Vegas.Project.Tracks.Add(audioTrack);
             }
         }
 
         /// <summary>
-        /// Form actions
+        /// Form events
         /// </summary>
+        private void lblCustomFadesAbout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/RatinA0/LyricerExtension");
+        }
+
         private void btnCountTracks_Click(object sender, EventArgs e)
         {
             CountTracks();
@@ -92,7 +105,7 @@ namespace Lyricer
         {
             using (UndoBlock undo = new UndoBlock("Add New Audio Track"))
             {
-                AddTrack("A", myVegas.Project.Tracks.Count + 1, "");
+                AddTrack("A", Data.Vegas.Project.Tracks.Count + 1, "");
             }
         }
 
@@ -100,22 +113,22 @@ namespace Lyricer
         {
             using (UndoBlock undo = new UndoBlock("Add Effect"))
             {
-                List<TrackEvent> selectedEvents = Methods.GetSelectedEvents(myVegas.Project.Tracks);
+                List<TrackEvent> selectedEvents = Methods.GetSelectedEvents(Data.Vegas.Project.Tracks);
                 if (selectedEvents.Count == 0) return;
 
                 string generatorUID = "{Svfx:com.genarts.sapphire.Distort.S_Shake}";
                 //int presetName = "(Default)";
                 //int presetIndex = 0;
 
-                PlugInNode plugIn = myVegas.VideoFX.GetChildByUniqueID(generatorUID);
+                PlugInNode plugIn = Data.Vegas.VideoFX.GetChildByUniqueID(generatorUID);
                 if (plugIn == null) return;
-                Effect effect = new Effect(plugIn);
 
                 foreach (TrackEvent trackEvent in selectedEvents)
                 {
                     if (trackEvent.IsAudio()) continue;
                     var videoEvent = (VideoEvent)trackEvent;
 
+                    Effect effect = new Effect(plugIn);
                     videoEvent.Effects.Add(effect);
 
                     //effect.Preset = effect.Presets[presetIndex].Name;
@@ -124,7 +137,7 @@ namespace Lyricer
                     if (!effect.PlugIn.IsOFX) continue;
                     OFXEffect ofx = effect.OFXEffect;
                     Methods.SetParameterDouble(ofx, "Z Dist", 2);
-                    Methods.SetParameterDouble(ofx, "Tilt Rand Amp", 69);
+                    Methods.SetParameterDouble(ofx, "Tilt Rand Amp", random.NextDouble() * 69);
                     Methods.SetParameterDouble(ofx, "Seed", random.NextDouble() * 5);
                 }
             }
@@ -132,7 +145,7 @@ namespace Lyricer
 
         private void btnGetEffects_Click(object sender, EventArgs e)
         {
-            GetEffectsGUID.GetEffects(myVegas, true);
+            GetEffectsGUID.GetEffects(Data.Vegas, true);
         }
 
         private void btnCreateText_Click(object sender, EventArgs e)
@@ -141,15 +154,16 @@ namespace Lyricer
             using (UndoBlock undo = new UndoBlock("Add Text"))
             {
                 // get the Tiles & Text media generator
-                PlugInNode generator = myVegas.Generators.GetChildByUniqueID("{Svfx:com.sonycreativesoftware:titlesandtext}");
+                PlugInNode generator = Data.Vegas.Generators.GetChildByUniqueID("{Svfx:com.sonycreativesoftware:titlesandtext}");
                 if (generator == null) return;
 
                 var media = new Media(generator);
                 var stream = media.Streams.GetItemByMediaType(MediaType.Video, 0);
-                var newEvent = new VideoEvent(myVegas.Transport.CursorPosition); // , Timecode.FromSeconds(length));
+                var newEvent = new VideoEvent(Data.Vegas.Transport.CursorPosition); // , Timecode.FromSeconds(length));
 
-                if (myVegas.Project.Tracks.Count == 0) AddTrack("V", 0, "");
-                myVegas.Project.Tracks[0].Events.Add(newEvent);
+                // create a new track if there's none
+                if (Data.Vegas.Project.Tracks.Count == 0) AddTrack("V", 0, "");
+                Data.Vegas.Project.Tracks[0].Events.Add(newEvent);
 
                 var take = new Take(stream);
                 newEvent.Takes.Add(take);
@@ -164,27 +178,13 @@ namespace Lyricer
                 RichTextBox rtfText = new RichTextBox
                 {
                     Rtf = ofxParam.Value,
-                    Text = "text"
+                    Text = txtNewText.Text
                 };
                 ofxParam.Value = rtfText.Rtf;
 
                 // make sure all the changes get applied
                 ofx.AllParametersChanged();
             }
-        }
-
-        private void tabControl_TabIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MainForm_Resize(object sender, EventArgs e)
-        {
-            //if (ClientSize.Width < 850) tabControl.Width = ClientSize.Width;
-            //else tabControl.Width = 850;
-
-            //if (ClientSize.Height < 580) tabControl.Height = ClientSize.Height;
-            //else tabControl.Height = 580;
         }
     }
 }
