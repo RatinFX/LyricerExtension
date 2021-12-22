@@ -61,7 +61,6 @@
             // 
             // nudExtend
             // 
-            this.nudExtend.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudExtend.Location = new System.Drawing.Point(68, 18);
             this.nudExtend.Margin = new System.Windows.Forms.Padding(3, 3, 8, 3);
             this.nudExtend.Maximum = new decimal(new int[] {
@@ -70,22 +69,20 @@
             0,
             0});
             this.nudExtend.Name = "nudExtend";
-            this.nudExtend.Size = new System.Drawing.Size(81, 23);
+            this.nudExtend.Size = new System.Drawing.Size(81, 20);
             this.nudExtend.TabIndex = 2;
             // 
             // lblExtendLength
             // 
             this.lblExtendLength.AutoSize = true;
-            this.lblExtendLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExtendLength.Location = new System.Drawing.Point(6, 20);
             this.lblExtendLength.Name = "lblExtendLength";
-            this.lblExtendLength.Size = new System.Drawing.Size(56, 17);
+            this.lblExtendLength.Size = new System.Drawing.Size(43, 13);
             this.lblExtendLength.TabIndex = 0;
             this.lblExtendLength.Text = "Length:";
             // 
             // cbExtendTimecode
             // 
-            this.cbExtendTimecode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbExtendTimecode.FormattingEnabled = true;
             this.cbExtendTimecode.Items.AddRange(new object[] {
             "Frames",
@@ -93,7 +90,7 @@
             this.cbExtendTimecode.Location = new System.Drawing.Point(161, 17);
             this.cbExtendTimecode.Margin = new System.Windows.Forms.Padding(4, 4, 8, 4);
             this.cbExtendTimecode.Name = "cbExtendTimecode";
-            this.cbExtendTimecode.Size = new System.Drawing.Size(105, 24);
+            this.cbExtendTimecode.Size = new System.Drawing.Size(105, 21);
             this.cbExtendTimecode.TabIndex = 3;
             this.cbExtendTimecode.Text = "Frames";
             // 
@@ -103,17 +100,17 @@
             this.gbxExtend.Controls.Add(this.lblExtendLength);
             this.gbxExtend.Controls.Add(this.nudExtend);
             this.gbxExtend.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxExtend.Location = new System.Drawing.Point(10, 94);
+            this.gbxExtend.Location = new System.Drawing.Point(10, 89);
             this.gbxExtend.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.gbxExtend.Name = "gbxExtend";
-            this.gbxExtend.Size = new System.Drawing.Size(277, 55);
+            this.gbxExtend.Size = new System.Drawing.Size(277, 50);
             this.gbxExtend.TabIndex = 6;
             this.gbxExtend.TabStop = false;
             this.gbxExtend.Text = "Extend settings";
             // 
             // btnHelp
             // 
-            this.btnHelp.Location = new System.Drawing.Point(213, 155);
+            this.btnHelp.Location = new System.Drawing.Point(214, 145);
             this.btnHelp.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(75, 30);
@@ -124,7 +121,7 @@
             // 
             // btnRun
             // 
-            this.btnRun.Location = new System.Drawing.Point(9, 155);
+            this.btnRun.Location = new System.Drawing.Point(10, 145);
             this.btnRun.Margin = new System.Windows.Forms.Padding(10, 3, 3, 10);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(198, 30);
@@ -135,7 +132,6 @@
             // 
             // nudShorten
             // 
-            this.nudShorten.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudShorten.Location = new System.Drawing.Point(68, 18);
             this.nudShorten.Margin = new System.Windows.Forms.Padding(3, 3, 8, 3);
             this.nudShorten.Maximum = new decimal(new int[] {
@@ -144,22 +140,20 @@
             0,
             0});
             this.nudShorten.Name = "nudShorten";
-            this.nudShorten.Size = new System.Drawing.Size(81, 23);
+            this.nudShorten.Size = new System.Drawing.Size(81, 20);
             this.nudShorten.TabIndex = 0;
             // 
             // lblShortenLength
             // 
             this.lblShortenLength.AutoSize = true;
-            this.lblShortenLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblShortenLength.Location = new System.Drawing.Point(6, 20);
             this.lblShortenLength.Name = "lblShortenLength";
-            this.lblShortenLength.Size = new System.Drawing.Size(56, 17);
+            this.lblShortenLength.Size = new System.Drawing.Size(43, 13);
             this.lblShortenLength.TabIndex = 0;
             this.lblShortenLength.Text = "Length:";
             // 
             // cbShortenTimecode
             // 
-            this.cbShortenTimecode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbShortenTimecode.FormattingEnabled = true;
             this.cbShortenTimecode.Items.AddRange(new object[] {
             "Frames",
@@ -167,7 +161,7 @@
             this.cbShortenTimecode.Location = new System.Drawing.Point(161, 17);
             this.cbShortenTimecode.Margin = new System.Windows.Forms.Padding(4, 4, 8, 4);
             this.cbShortenTimecode.Name = "cbShortenTimecode";
-            this.cbShortenTimecode.Size = new System.Drawing.Size(105, 24);
+            this.cbShortenTimecode.Size = new System.Drawing.Size(105, 21);
             this.cbShortenTimecode.TabIndex = 1;
             this.cbShortenTimecode.Text = "Frames";
             // 
@@ -180,7 +174,7 @@
             this.gbxShorten.Location = new System.Drawing.Point(10, 33);
             this.gbxShorten.Margin = new System.Windows.Forms.Padding(10, 10, 3, 3);
             this.gbxShorten.Name = "gbxShorten";
-            this.gbxShorten.Size = new System.Drawing.Size(277, 55);
+            this.gbxShorten.Size = new System.Drawing.Size(277, 50);
             this.gbxShorten.TabIndex = 5;
             this.gbxShorten.TabStop = false;
             this.gbxShorten.Text = "Shorten settings";
@@ -188,7 +182,7 @@
             // lblBudgetTodo
             // 
             this.lblBudgetTodo.AutoSize = true;
-            this.lblBudgetTodo.Location = new System.Drawing.Point(10, 199);
+            this.lblBudgetTodo.Location = new System.Drawing.Point(11, 189);
             this.lblBudgetTodo.Name = "lblBudgetTodo";
             this.lblBudgetTodo.Size = new System.Drawing.Size(224, 13);
             this.lblBudgetTodo.TabIndex = 7;
@@ -199,7 +193,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.lblBudgetTodo);
             this.Controls.Add(this.gbxShorten);
             this.Controls.Add(this.btnRun);

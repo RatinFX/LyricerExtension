@@ -73,10 +73,9 @@
             // cbxFOReduceLength
             // 
             this.cbxFOReduceLength.AutoSize = true;
-            this.cbxFOReduceLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbxFOReduceLength.Location = new System.Drawing.Point(200, 54);
+            this.cbxFOReduceLength.Location = new System.Drawing.Point(200, 46);
             this.cbxFOReduceLength.Name = "cbxFOReduceLength";
-            this.cbxFOReduceLength.Size = new System.Drawing.Size(124, 21);
+            this.cbxFOReduceLength.Size = new System.Drawing.Size(100, 17);
             this.cbxFOReduceLength.TabIndex = 4;
             this.cbxFOReduceLength.Text = "Reduce Length";
             this.cbxFOReduceLength.UseVisualStyleBackColor = true;
@@ -93,10 +92,10 @@
             this.FadeOutGroup.Controls.Add(this.cbFadeOutCurve);
             this.FadeOutGroup.Controls.Add(this.cbxChangeFadeOutCurveType);
             this.FadeOutGroup.Controls.Add(this.cbFadeOutTimecode);
-            this.FadeOutGroup.Location = new System.Drawing.Point(10, 165);
+            this.FadeOutGroup.Location = new System.Drawing.Point(10, 141);
             this.FadeOutGroup.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.FadeOutGroup.Name = "FadeOutGroup";
-            this.FadeOutGroup.Size = new System.Drawing.Size(331, 126);
+            this.FadeOutGroup.Size = new System.Drawing.Size(331, 102);
             this.FadeOutGroup.TabIndex = 10;
             this.FadeOutGroup.TabStop = false;
             this.FadeOutGroup.Text = "Fade Out settings";
@@ -104,30 +103,27 @@
             // cbxFOAddLength
             // 
             this.cbxFOAddLength.AutoSize = true;
-            this.cbxFOAddLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbxFOAddLength.Location = new System.Drawing.Point(142, 54);
+            this.cbxFOAddLength.Location = new System.Drawing.Point(112, 46);
             this.cbxFOAddLength.Name = "cbxFOAddLength";
-            this.cbxFOAddLength.Size = new System.Drawing.Size(52, 21);
+            this.cbxFOAddLength.Size = new System.Drawing.Size(77, 17);
             this.cbxFOAddLength.TabIndex = 3;
-            this.cbxFOAddLength.Text = "Add";
+            this.cbxFOAddLength.Text = "Add length";
             this.cbxFOAddLength.UseVisualStyleBackColor = true;
             this.cbxFOAddLength.CheckedChanged += new System.EventHandler(this.cbxFadeOutAddLength_CheckedChanged);
             // 
             // lbFadeOut
             // 
             this.lbFadeOut.AutoSize = true;
-            this.lbFadeOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lbFadeOut.Location = new System.Drawing.Point(8, 24);
+            this.lbFadeOut.Location = new System.Drawing.Point(8, 20);
             this.lbFadeOut.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbFadeOut.Name = "lbFadeOut";
-            this.lbFadeOut.Size = new System.Drawing.Size(87, 17);
+            this.lbFadeOut.Size = new System.Drawing.Size(68, 13);
             this.lbFadeOut.TabIndex = 0;
             this.lbFadeOut.Text = "New Length:";
             // 
             // nudFadeOut
             // 
-            this.nudFadeOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.nudFadeOut.Location = new System.Drawing.Point(96, 22);
+            this.nudFadeOut.Location = new System.Drawing.Point(96, 18);
             this.nudFadeOut.Margin = new System.Windows.Forms.Padding(4);
             this.nudFadeOut.Maximum = new decimal(new int[] {
             10000,
@@ -135,16 +131,15 @@
             0,
             0});
             this.nudFadeOut.Name = "nudFadeOut";
-            this.nudFadeOut.Size = new System.Drawing.Size(98, 23);
+            this.nudFadeOut.Size = new System.Drawing.Size(98, 20);
             this.nudFadeOut.TabIndex = 0;
             // 
             // cbxFadeOutToZero
             // 
             this.cbxFadeOutToZero.AutoSize = true;
-            this.cbxFadeOutToZero.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbxFadeOutToZero.Location = new System.Drawing.Point(11, 54);
+            this.cbxFadeOutToZero.Location = new System.Drawing.Point(11, 46);
             this.cbxFadeOutToZero.Name = "cbxFadeOutToZero";
-            this.cbxFadeOutToZero.Size = new System.Drawing.Size(119, 21);
+            this.cbxFadeOutToZero.Size = new System.Drawing.Size(95, 17);
             this.cbxFadeOutToZero.TabIndex = 2;
             this.cbxFadeOutToZero.Text = "Set length to 0";
             this.cbxFadeOutToZero.UseVisualStyleBackColor = true;
@@ -153,18 +148,16 @@
             // lbFadeOutCurve
             // 
             this.lbFadeOutCurve.AutoSize = true;
-            this.lbFadeOutCurve.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lbFadeOutCurve.Location = new System.Drawing.Point(8, 89);
+            this.lbFadeOutCurve.Location = new System.Drawing.Point(8, 72);
             this.lbFadeOutCurve.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbFadeOutCurve.Name = "lbFadeOutCurve";
-            this.lbFadeOutCurve.Size = new System.Drawing.Size(80, 17);
+            this.lbFadeOutCurve.Size = new System.Drawing.Size(61, 13);
             this.lbFadeOutCurve.TabIndex = 2;
             this.lbFadeOutCurve.Text = "Curve type:";
             // 
             // cbFadeOutCurve
             // 
             this.cbFadeOutCurve.Enabled = false;
-            this.cbFadeOutCurve.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbFadeOutCurve.FormattingEnabled = true;
             this.cbFadeOutCurve.Items.AddRange(new object[] {
             "Fast",
@@ -172,20 +165,19 @@
             "Sharp",
             "Slow",
             "Smooth"});
-            this.cbFadeOutCurve.Location = new System.Drawing.Point(96, 86);
+            this.cbFadeOutCurve.Location = new System.Drawing.Point(96, 69);
             this.cbFadeOutCurve.Margin = new System.Windows.Forms.Padding(4);
             this.cbFadeOutCurve.Name = "cbFadeOutCurve";
-            this.cbFadeOutCurve.Size = new System.Drawing.Size(98, 24);
+            this.cbFadeOutCurve.Size = new System.Drawing.Size(98, 21);
             this.cbFadeOutCurve.TabIndex = 5;
             this.cbFadeOutCurve.Text = "Smooth";
             // 
             // cbxChangeFadeOutCurveType
             // 
             this.cbxChangeFadeOutCurveType.AutoSize = true;
-            this.cbxChangeFadeOutCurveType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbxChangeFadeOutCurveType.Location = new System.Drawing.Point(200, 88);
+            this.cbxChangeFadeOutCurveType.Location = new System.Drawing.Point(200, 71);
             this.cbxChangeFadeOutCurveType.Name = "cbxChangeFadeOutCurveType";
-            this.cbxChangeFadeOutCurveType.Size = new System.Drawing.Size(115, 21);
+            this.cbxChangeFadeOutCurveType.Size = new System.Drawing.Size(93, 17);
             this.cbxChangeFadeOutCurveType.TabIndex = 6;
             this.cbxChangeFadeOutCurveType.Text = "Change curve";
             this.cbxChangeFadeOutCurveType.UseVisualStyleBackColor = true;
@@ -193,25 +185,23 @@
             // 
             // cbFadeOutTimecode
             // 
-            this.cbFadeOutTimecode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbFadeOutTimecode.FormattingEnabled = true;
             this.cbFadeOutTimecode.Items.AddRange(new object[] {
             "Frames",
             "Seconds"});
-            this.cbFadeOutTimecode.Location = new System.Drawing.Point(200, 21);
+            this.cbFadeOutTimecode.Location = new System.Drawing.Point(200, 17);
             this.cbFadeOutTimecode.Margin = new System.Windows.Forms.Padding(4, 4, 8, 4);
             this.cbFadeOutTimecode.Name = "cbFadeOutTimecode";
-            this.cbFadeOutTimecode.Size = new System.Drawing.Size(120, 24);
+            this.cbFadeOutTimecode.Size = new System.Drawing.Size(120, 21);
             this.cbFadeOutTimecode.TabIndex = 1;
             this.cbFadeOutTimecode.Text = "Frames";
             // 
             // cbxFIReduceLength
             // 
             this.cbxFIReduceLength.AutoSize = true;
-            this.cbxFIReduceLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbxFIReduceLength.Location = new System.Drawing.Point(200, 50);
+            this.cbxFIReduceLength.Location = new System.Drawing.Point(200, 46);
             this.cbxFIReduceLength.Name = "cbxFIReduceLength";
-            this.cbxFIReduceLength.Size = new System.Drawing.Size(124, 21);
+            this.cbxFIReduceLength.Size = new System.Drawing.Size(100, 17);
             this.cbxFIReduceLength.TabIndex = 4;
             this.cbxFIReduceLength.Text = "Reduce Length";
             this.cbxFIReduceLength.UseVisualStyleBackColor = true;
@@ -220,12 +210,11 @@
             // cbxFIAddLength
             // 
             this.cbxFIAddLength.AutoSize = true;
-            this.cbxFIAddLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbxFIAddLength.Location = new System.Drawing.Point(142, 50);
+            this.cbxFIAddLength.Location = new System.Drawing.Point(112, 46);
             this.cbxFIAddLength.Name = "cbxFIAddLength";
-            this.cbxFIAddLength.Size = new System.Drawing.Size(52, 21);
+            this.cbxFIAddLength.Size = new System.Drawing.Size(77, 17);
             this.cbxFIAddLength.TabIndex = 3;
-            this.cbxFIAddLength.Text = "Add";
+            this.cbxFIAddLength.Text = "Add length";
             this.cbxFIAddLength.UseVisualStyleBackColor = true;
             this.cbxFIAddLength.CheckedChanged += new System.EventHandler(this.cbxFadeInAddLength_CheckedChanged);
             // 
@@ -243,7 +232,7 @@
             this.FadeInGroup.Location = new System.Drawing.Point(10, 33);
             this.FadeInGroup.Margin = new System.Windows.Forms.Padding(10, 10, 3, 3);
             this.FadeInGroup.Name = "FadeInGroup";
-            this.FadeInGroup.Size = new System.Drawing.Size(331, 126);
+            this.FadeInGroup.Size = new System.Drawing.Size(331, 102);
             this.FadeInGroup.TabIndex = 9;
             this.FadeInGroup.TabStop = false;
             this.FadeInGroup.Text = "Fade In settings";
@@ -251,21 +240,19 @@
             // lbFadeIn
             // 
             this.lbFadeIn.AutoSize = true;
-            this.lbFadeIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lbFadeIn.Location = new System.Drawing.Point(8, 20);
             this.lbFadeIn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbFadeIn.Name = "lbFadeIn";
-            this.lbFadeIn.Size = new System.Drawing.Size(87, 17);
+            this.lbFadeIn.Size = new System.Drawing.Size(68, 13);
             this.lbFadeIn.TabIndex = 0;
             this.lbFadeIn.Text = "New Length:";
             // 
             // cbxFadeInToZero
             // 
             this.cbxFadeInToZero.AutoSize = true;
-            this.cbxFadeInToZero.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbxFadeInToZero.Location = new System.Drawing.Point(11, 50);
+            this.cbxFadeInToZero.Location = new System.Drawing.Point(11, 46);
             this.cbxFadeInToZero.Name = "cbxFadeInToZero";
-            this.cbxFadeInToZero.Size = new System.Drawing.Size(119, 21);
+            this.cbxFadeInToZero.Size = new System.Drawing.Size(95, 17);
             this.cbxFadeInToZero.TabIndex = 2;
             this.cbxFadeInToZero.Text = "Set length to 0";
             this.cbxFadeInToZero.UseVisualStyleBackColor = true;
@@ -273,7 +260,6 @@
             // 
             // nudFadeIn
             // 
-            this.nudFadeIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.nudFadeIn.Location = new System.Drawing.Point(96, 18);
             this.nudFadeIn.Margin = new System.Windows.Forms.Padding(4);
             this.nudFadeIn.Maximum = new decimal(new int[] {
@@ -282,24 +268,22 @@
             0,
             0});
             this.nudFadeIn.Name = "nudFadeIn";
-            this.nudFadeIn.Size = new System.Drawing.Size(98, 23);
+            this.nudFadeIn.Size = new System.Drawing.Size(98, 20);
             this.nudFadeIn.TabIndex = 0;
             // 
             // lbFadeInCurve
             // 
             this.lbFadeInCurve.AutoSize = true;
-            this.lbFadeInCurve.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lbFadeInCurve.Location = new System.Drawing.Point(8, 85);
+            this.lbFadeInCurve.Location = new System.Drawing.Point(8, 72);
             this.lbFadeInCurve.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbFadeInCurve.Name = "lbFadeInCurve";
-            this.lbFadeInCurve.Size = new System.Drawing.Size(80, 17);
+            this.lbFadeInCurve.Size = new System.Drawing.Size(61, 13);
             this.lbFadeInCurve.TabIndex = 2;
             this.lbFadeInCurve.Text = "Curve type:";
             // 
             // cbFadeInCurve
             // 
             this.cbFadeInCurve.Enabled = false;
-            this.cbFadeInCurve.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbFadeInCurve.FormattingEnabled = true;
             this.cbFadeInCurve.Items.AddRange(new object[] {
             "Fast",
@@ -307,16 +291,15 @@
             "Sharp",
             "Slow",
             "Smooth"});
-            this.cbFadeInCurve.Location = new System.Drawing.Point(96, 82);
+            this.cbFadeInCurve.Location = new System.Drawing.Point(96, 69);
             this.cbFadeInCurve.Margin = new System.Windows.Forms.Padding(4);
             this.cbFadeInCurve.Name = "cbFadeInCurve";
-            this.cbFadeInCurve.Size = new System.Drawing.Size(98, 24);
+            this.cbFadeInCurve.Size = new System.Drawing.Size(98, 21);
             this.cbFadeInCurve.TabIndex = 5;
             this.cbFadeInCurve.Text = "Smooth";
             // 
             // cbFadeInTimecode
             // 
-            this.cbFadeInTimecode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbFadeInTimecode.FormattingEnabled = true;
             this.cbFadeInTimecode.Items.AddRange(new object[] {
             "Frames",
@@ -324,17 +307,16 @@
             this.cbFadeInTimecode.Location = new System.Drawing.Point(200, 17);
             this.cbFadeInTimecode.Margin = new System.Windows.Forms.Padding(4, 4, 8, 4);
             this.cbFadeInTimecode.Name = "cbFadeInTimecode";
-            this.cbFadeInTimecode.Size = new System.Drawing.Size(120, 24);
+            this.cbFadeInTimecode.Size = new System.Drawing.Size(120, 21);
             this.cbFadeInTimecode.TabIndex = 1;
             this.cbFadeInTimecode.Text = "Frames";
             // 
             // cbxChangeFadeInCurveType
             // 
             this.cbxChangeFadeInCurveType.AutoSize = true;
-            this.cbxChangeFadeInCurveType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbxChangeFadeInCurveType.Location = new System.Drawing.Point(200, 85);
+            this.cbxChangeFadeInCurveType.Location = new System.Drawing.Point(200, 72);
             this.cbxChangeFadeInCurveType.Name = "cbxChangeFadeInCurveType";
-            this.cbxChangeFadeInCurveType.Size = new System.Drawing.Size(115, 21);
+            this.cbxChangeFadeInCurveType.Size = new System.Drawing.Size(93, 17);
             this.cbxChangeFadeInCurveType.TabIndex = 6;
             this.cbxChangeFadeInCurveType.Text = "Change curve";
             this.cbxChangeFadeInCurveType.UseVisualStyleBackColor = true;
@@ -342,7 +324,7 @@
             // 
             // btnHelp
             // 
-            this.btnHelp.Location = new System.Drawing.Point(264, 297);
+            this.btnHelp.Location = new System.Drawing.Point(264, 249);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(78, 34);
             this.btnHelp.TabIndex = 12;
@@ -352,7 +334,7 @@
             // 
             // btRun
             // 
-            this.btRun.Location = new System.Drawing.Point(10, 297);
+            this.btRun.Location = new System.Drawing.Point(10, 249);
             this.btRun.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.btRun.Name = "btRun";
             this.btRun.Size = new System.Drawing.Size(248, 34);
@@ -365,7 +347,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.FadeOutGroup);
             this.Controls.Add(this.FadeInGroup);
             this.Controls.Add(this.btnHelp);
