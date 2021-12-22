@@ -21,28 +21,28 @@ namespace Lyricer
         public static void GetEffects(Vegas myVegas, bool isSeparate = false)
         {
             /// Get Audio Effects
-            iniw.WriteLine("\n[ Audio Effects ]");
-            //fullText += "[ Audio Effects ]\n";
+            // ToText("Audio Effects");
+            NewSection("Audio Effects");
             CheckListItems(myVegas.AudioFX, true);
 
             /// Get Video Effects
-            iniw.WriteLine("\n[ Video Effects ]");
-            //fullText += "\n[ Video Effects ]\n";
+            // ToText("Video Effects");
+            NewSection("Video Effects");
             CheckListItems(myVegas.VideoFX, false, true);
 
             /// Get Generators
-            iniw.WriteLine("\n[ Generators ]");
-            //fullText += "\n[ Generators ]\n";
+            // ToText("Generators");
+            NewSection("Generators");
             CheckListItems(myVegas.Generators);
 
             /// Get Transitions
-            iniw.WriteLine("\n[ Transitions ]");
-            //fullText += "\n[ Transitions ]\n";
+            // ToText("Transitions");
+            NewSection("Transitions");
             CheckListItems(myVegas.Transitions);
 
             /// Get Renderers
-            iniw.WriteLine("\n[ Renderers ]");
-            //fullText += "\n[ Renderers ]\n";
+            // ToText("Renderers");
+            NewSection("Renderers");
             foreach (Renderer renderer in myVegas.Renderers)
             {
                 if (renderer == null) continue;
@@ -53,10 +53,19 @@ namespace Lyricer
                 //fullText += newLine;
             }
 
-            iniw.Write(fullText);
+            //iniw.Write(fullText);
             iniw.Close();
             inis.Close();
-            //MessageBox.Show("Processing done.");
+        }
+
+        static void ToText(string section)
+        {
+            fullText += $"\n[ {section} ]\n";
+        }
+
+        static void NewSection(string section)
+        {
+            iniw.WriteLine($"\n[ {section} ]");
         }
 
         /// <summary>
