@@ -131,9 +131,7 @@ namespace Lyricer
             {
                 using (UndoBlock undo = new UndoBlock($"Custom Fades: "))
                 {
-                    List<TrackEvent> selectedEvents = Methods.GetSelectedEvents(Data.Vegas.Project.Tracks);
-
-                    foreach (TrackEvent trackEvent in selectedEvents)
+                    foreach (TrackEvent trackEvent in Data.SelectedMedias)
                     {
                         FrameChecker((int)nudFadeIn.Value, cbFadeInTimecode.Text, RFIL, AFIL, FITZ, trackEvent.FadeIn);
                         FrameChecker((int)nudFadeOut.Value, cbFadeOutTimecode.Text, RFOL, AFOL, FOTZ, trackEvent.FadeOut);

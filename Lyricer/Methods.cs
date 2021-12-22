@@ -1,6 +1,7 @@
 ﻿using ScriptPortal.Vegas;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 //using Sony.Vegas;
 
 namespace Lyricer
@@ -16,6 +17,7 @@ namespace Lyricer
         /// <param name="tracks">Vegas.Project.Tracks</param>
         /// <returns></returns>
         public static List<TrackEvent> GetSelectedEvents(Tracks tracks)
+        /// UNUSED -> use Data.SelectedMedias
         {
             // if we're gonna change the timecode of the Event,
             // it's recommended to put it in a new Array/List
@@ -77,12 +79,12 @@ namespace Lyricer
         {
             var ofxParam = (OFXChoiceParameter)ofx[param];
             ofxParam.IsAnimated = false;
-            if(value != null) ofxParam.Value = value;
+            if (value != null) ofxParam.Value = value;
         }
         public static void SetParameterChoice(OFXEffect ofx, string param, OFXChoice value, Timecode timecode)
         {
             var ofxParam = (OFXChoiceParameter)ofx[param];
-            if(!ofxParam.IsAnimated) ofxParam.IsAnimated = true;
+            if (!ofxParam.IsAnimated) ofxParam.IsAnimated = true;
             ofxParam.SetValueAtTime(timecode, value);
         }
         /// color + animated
@@ -236,6 +238,31 @@ namespace Lyricer
             var ofxParam = (OFXStringParameter)ofx[param];
             if (!ofxParam.IsAnimated) ofxParam.IsAnimated = true;
             ofxParam.SetValueAtTime(timecode, value);
+        }
+        /// <summary>
+        /// rich text string + animated
+        /// </summary>
+        public static void SetParameterRichText(OFXEffect ofx, string param, string value)
+        {
+            var ofxParam = (OFXStringParameter)ofx[param];
+            RichTextBox rtfText = new RichTextBox
+            {
+                Rtf = ofxParam.Value,
+                Text = value
+            };
+            ofxParam.IsAnimated = false;
+            ofxParam.Value = rtfText.Rtf;
+        }
+        public static void SetParameterRichText(OFXEffect ofx, string param, string value, Timecode timecode)
+        {
+            var ofxParam = (OFXStringParameter)ofx[param];
+            RichTextBox rtfText = new RichTextBox
+            {
+                Rtf = ofxParam.Value,
+                Text = value
+            };
+            if (!ofxParam.IsAnimated) ofxParam.IsAnimated = true;
+            ofxParam.SetValueAtTime(timecode, rtfText.Rtf);
         }
 
 

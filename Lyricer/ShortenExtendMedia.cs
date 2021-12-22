@@ -33,9 +33,7 @@ namespace Lyricer
             {
                 try
                 {
-                    List<TrackEvent> selectedEvents = Methods.GetSelectedEvents(Data.Vegas.Project.Tracks);
-
-                    foreach (TrackEvent trackEvent in selectedEvents)
+                    foreach (TrackEvent trackEvent in Data.SelectedMedias)
                     {
                         var tempFadeInLength = trackEvent.FadeIn.Length;
                         var tempFadeOutLength = trackEvent.FadeOut.Length;
