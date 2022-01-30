@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 //using Sony.Vegas;
 using ScriptPortal.Vegas;
+using VegasProData;
 
 namespace Lyricer
 {
@@ -57,11 +58,13 @@ namespace Lyricer
         private void cbxFadeInToZero_CheckedChanged(object sender, EventArgs e)
         {
             FITZ = cbxFadeInToZero.Checked;
+            if(FITZ) nudFadeIn.Value = 0;
             nudFadeIn.Enabled = cbFadeInTimecode.Enabled = cbxFIAddLength.Enabled = cbxFIReduceLength.Enabled = !cbxFadeInToZero.Checked;
         }
         private void cbxFadeOutToZero_CheckedChanged(object sender, EventArgs e)
         {
             FOTZ = cbxFadeOutToZero.Checked;
+            if(FOTZ) nudFadeOut.Value = 0;
             nudFadeOut.Enabled = cbFadeOutTimecode.Enabled = cbxFOAddLength.Enabled = cbxFOReduceLength.Enabled = !cbxFadeOutToZero.Checked;
         }
 
