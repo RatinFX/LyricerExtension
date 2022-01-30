@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 //using Sony.Vegas;
 using ScriptPortal.Vegas;
+using VegasProData;
 
 namespace Lyricer
 {
@@ -18,6 +13,11 @@ namespace Lyricer
         public ShortenExtendMedia()
         {
             InitializeComponent();
+        }
+
+        void ResetValues()
+        {
+            nudExtend.Value = nudShorten.Value = 0;
         }
 
         private void lblShortenExtendMediaAbout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -80,6 +80,7 @@ namespace Lyricer
                     MessageBox.Show(ex.Message);
                 }
             }
+            if (cbxResetOnRun.Checked) ResetValues();
         }
 
         private void btnHelp_Click(object sender, EventArgs e)

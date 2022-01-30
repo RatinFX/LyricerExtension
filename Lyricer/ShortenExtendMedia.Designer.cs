@@ -39,7 +39,7 @@
             this.lblShortenLength = new System.Windows.Forms.Label();
             this.cbShortenTimecode = new System.Windows.Forms.ComboBox();
             this.gbxShorten = new System.Windows.Forms.GroupBox();
-            this.lblBudgetTodo = new System.Windows.Forms.Label();
+            this.cbxResetOnRun = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudExtend)).BeginInit();
             this.gbxExtend.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudShorten)).BeginInit();
@@ -51,7 +51,7 @@
             this.lblShortenExtendMediaAbout.AutoSize = true;
             this.lblShortenExtendMediaAbout.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lblShortenExtendMediaAbout.Location = new System.Drawing.Point(10, 10);
-            this.lblShortenExtendMediaAbout.Margin = new System.Windows.Forms.Padding(10);
+            this.lblShortenExtendMediaAbout.Margin = new System.Windows.Forms.Padding(10, 10, 10, 5);
             this.lblShortenExtendMediaAbout.Name = "lblShortenExtendMediaAbout";
             this.lblShortenExtendMediaAbout.Size = new System.Drawing.Size(224, 13);
             this.lblShortenExtendMediaAbout.TabIndex = 6;
@@ -100,7 +100,7 @@
             this.gbxExtend.Controls.Add(this.lblExtendLength);
             this.gbxExtend.Controls.Add(this.nudExtend);
             this.gbxExtend.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxExtend.Location = new System.Drawing.Point(10, 89);
+            this.gbxExtend.Location = new System.Drawing.Point(10, 114);
             this.gbxExtend.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.gbxExtend.Name = "gbxExtend";
             this.gbxExtend.Size = new System.Drawing.Size(277, 50);
@@ -110,7 +110,7 @@
             // 
             // btnHelp
             // 
-            this.btnHelp.Location = new System.Drawing.Point(214, 145);
+            this.btnHelp.Location = new System.Drawing.Point(214, 170);
             this.btnHelp.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(75, 30);
@@ -121,7 +121,7 @@
             // 
             // btnRun
             // 
-            this.btnRun.Location = new System.Drawing.Point(10, 145);
+            this.btnRun.Location = new System.Drawing.Point(10, 170);
             this.btnRun.Margin = new System.Windows.Forms.Padding(10, 3, 3, 10);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(198, 30);
@@ -171,22 +171,24 @@
             this.gbxShorten.Controls.Add(this.lblShortenLength);
             this.gbxShorten.Controls.Add(this.nudShorten);
             this.gbxShorten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxShorten.Location = new System.Drawing.Point(10, 33);
-            this.gbxShorten.Margin = new System.Windows.Forms.Padding(10, 10, 3, 3);
+            this.gbxShorten.Location = new System.Drawing.Point(10, 58);
+            this.gbxShorten.Margin = new System.Windows.Forms.Padding(10, 5, 3, 3);
             this.gbxShorten.Name = "gbxShorten";
             this.gbxShorten.Size = new System.Drawing.Size(277, 50);
             this.gbxShorten.TabIndex = 5;
             this.gbxShorten.TabStop = false;
             this.gbxShorten.Text = "Shorten settings";
             // 
-            // lblBudgetTodo
+            // cbxResetOnRun
             // 
-            this.lblBudgetTodo.AutoSize = true;
-            this.lblBudgetTodo.Location = new System.Drawing.Point(11, 189);
-            this.lblBudgetTodo.Name = "lblBudgetTodo";
-            this.lblBudgetTodo.Size = new System.Drawing.Size(224, 13);
-            this.lblBudgetTodo.TabIndex = 7;
-            this.lblBudgetTodo.Text = "todo:?? - separate runs? - back to 0 after run?";
+            this.cbxResetOnRun.AutoSize = true;
+            this.cbxResetOnRun.Location = new System.Drawing.Point(10, 33);
+            this.cbxResetOnRun.Margin = new System.Windows.Forms.Padding(10, 5, 10, 3);
+            this.cbxResetOnRun.Name = "cbxResetOnRun";
+            this.cbxResetOnRun.Size = new System.Drawing.Size(126, 17);
+            this.cbxResetOnRun.TabIndex = 8;
+            this.cbxResetOnRun.Text = "Reset values on Run";
+            this.cbxResetOnRun.UseVisualStyleBackColor = true;
             // 
             // ShortenExtendMedia
             // 
@@ -194,7 +196,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.lblBudgetTodo);
+            this.Controls.Add(this.cbxResetOnRun);
             this.Controls.Add(this.gbxShorten);
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.btnHelp);
@@ -226,6 +228,6 @@
         private System.Windows.Forms.Label lblShortenLength;
         private System.Windows.Forms.ComboBox cbShortenTimecode;
         private System.Windows.Forms.GroupBox gbxShorten;
-        private System.Windows.Forms.Label lblBudgetTodo;
+        private System.Windows.Forms.CheckBox cbxResetOnRun;
     }
 }
