@@ -45,11 +45,11 @@ namespace Lyricer
         /// </summary>
         private void cbxChangeFadeInCurveType_CheckedChanged(object sender, EventArgs e)
         {
-            changeFIC = cbFadeInCurve.Enabled = cbxChangeFadeInCurveType.Checked;
+            changeFIC = cbxFadeInCurve.Enabled = cbxChangeFadeInCurveType.Checked;
         }
         private void cbxChangeFadeOutCurveType_CheckedChanged(object sender, EventArgs e)
         {
-            changeFOC = cbFadeOutCurve.Enabled = cbxChangeFadeOutCurveType.Checked;
+            changeFOC = cbxFadeOutCurve.Enabled = cbxChangeFadeOutCurveType.Checked;
         }
 
         /// <summary>
@@ -59,13 +59,13 @@ namespace Lyricer
         {
             FITZ = cbxFadeInToZero.Checked;
             if(FITZ) nudFadeIn.Value = 0;
-            nudFadeIn.Enabled = cbFadeInTimecode.Enabled = cbxFIAddLength.Enabled = cbxFIReduceLength.Enabled = !cbxFadeInToZero.Checked;
+            nudFadeIn.Enabled = cbxFadeInTimecode.Enabled = cbxFIAddLength.Enabled = cbxFIReduceLength.Enabled = !cbxFadeInToZero.Checked;
         }
         private void cbxFadeOutToZero_CheckedChanged(object sender, EventArgs e)
         {
             FOTZ = cbxFadeOutToZero.Checked;
             if(FOTZ) nudFadeOut.Value = 0;
-            nudFadeOut.Enabled = cbFadeOutTimecode.Enabled = cbxFOAddLength.Enabled = cbxFOReduceLength.Enabled = !cbxFadeOutToZero.Checked;
+            nudFadeOut.Enabled = cbxFadeOutTimecode.Enabled = cbxFOAddLength.Enabled = cbxFOReduceLength.Enabled = !cbxFadeOutToZero.Checked;
         }
 
         /// <summary>
@@ -136,11 +136,11 @@ namespace Lyricer
                 {
                     foreach (TrackEvent trackEvent in Data.SelectedMedias)
                     {
-                        FrameChecker((int)nudFadeIn.Value, cbFadeInTimecode.Text, RFIL, AFIL, FITZ, trackEvent.FadeIn);
-                        FrameChecker((int)nudFadeOut.Value, cbFadeOutTimecode.Text, RFOL, AFOL, FOTZ, trackEvent.FadeOut);
+                        FrameChecker((int)nudFadeIn.Value, cbxFadeInTimecode.Text, RFIL, AFIL, FITZ, trackEvent.FadeIn);
+                        FrameChecker((int)nudFadeOut.Value, cbxFadeOutTimecode.Text, RFOL, AFOL, FOTZ, trackEvent.FadeOut);
 
-                        if (changeFIC) ChangeCurveTypes(cbFadeInCurve.Text, trackEvent.FadeIn);
-                        if (changeFOC) ChangeCurveTypes(cbFadeOutCurve.Text, trackEvent.FadeOut);
+                        if (changeFIC) ChangeCurveTypes(cbxFadeInCurve.Text, trackEvent.FadeIn);
+                        if (changeFOC) ChangeCurveTypes(cbxFadeOutCurve.Text, trackEvent.FadeOut);
                     }
                 }
             }

@@ -1,4 +1,5 @@
-﻿using ScriptPortal.Vegas;
+﻿//using Sony.Vegas;
+using ScriptPortal.Vegas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,6 @@ namespace Lyricer
     public class LyricerDockControl : DockableControl
     {
         private MainForm mainForm = null;
-        private EaseAutomator easer = null;
 
         public LyricerDockControl() : base("ILyricer")
         {

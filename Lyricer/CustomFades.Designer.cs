@@ -36,9 +36,9 @@
             this.nudFadeOut = new System.Windows.Forms.NumericUpDown();
             this.cbxFadeOutToZero = new System.Windows.Forms.CheckBox();
             this.lbFadeOutCurve = new System.Windows.Forms.Label();
-            this.cbFadeOutCurve = new System.Windows.Forms.ComboBox();
+            this.cbxFadeOutCurve = new System.Windows.Forms.ComboBox();
             this.cbxChangeFadeOutCurveType = new System.Windows.Forms.CheckBox();
-            this.cbFadeOutTimecode = new System.Windows.Forms.ComboBox();
+            this.cbxFadeOutTimecode = new System.Windows.Forms.ComboBox();
             this.cbxFIReduceLength = new System.Windows.Forms.CheckBox();
             this.cbxFIAddLength = new System.Windows.Forms.CheckBox();
             this.FadeInGroup = new System.Windows.Forms.GroupBox();
@@ -46,8 +46,8 @@
             this.cbxFadeInToZero = new System.Windows.Forms.CheckBox();
             this.nudFadeIn = new System.Windows.Forms.NumericUpDown();
             this.lbFadeInCurve = new System.Windows.Forms.Label();
-            this.cbFadeInCurve = new System.Windows.Forms.ComboBox();
-            this.cbFadeInTimecode = new System.Windows.Forms.ComboBox();
+            this.cbxFadeInCurve = new System.Windows.Forms.ComboBox();
+            this.cbxFadeInTimecode = new System.Windows.Forms.ComboBox();
             this.cbxChangeFadeInCurveType = new System.Windows.Forms.CheckBox();
             this.btnHelp = new System.Windows.Forms.Button();
             this.btRun = new System.Windows.Forms.Button();
@@ -89,9 +89,9 @@
             this.FadeOutGroup.Controls.Add(this.nudFadeOut);
             this.FadeOutGroup.Controls.Add(this.cbxFadeOutToZero);
             this.FadeOutGroup.Controls.Add(this.lbFadeOutCurve);
-            this.FadeOutGroup.Controls.Add(this.cbFadeOutCurve);
+            this.FadeOutGroup.Controls.Add(this.cbxFadeOutCurve);
             this.FadeOutGroup.Controls.Add(this.cbxChangeFadeOutCurveType);
-            this.FadeOutGroup.Controls.Add(this.cbFadeOutTimecode);
+            this.FadeOutGroup.Controls.Add(this.cbxFadeOutTimecode);
             this.FadeOutGroup.Location = new System.Drawing.Point(10, 141);
             this.FadeOutGroup.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.FadeOutGroup.Name = "FadeOutGroup";
@@ -157,20 +157,20 @@
             // 
             // cbFadeOutCurve
             // 
-            this.cbFadeOutCurve.Enabled = false;
-            this.cbFadeOutCurve.FormattingEnabled = true;
-            this.cbFadeOutCurve.Items.AddRange(new object[] {
+            this.cbxFadeOutCurve.Enabled = false;
+            this.cbxFadeOutCurve.FormattingEnabled = true;
+            this.cbxFadeOutCurve.Items.AddRange(new object[] {
             "Fast",
             "Linear",
             "Sharp",
             "Slow",
             "Smooth"});
-            this.cbFadeOutCurve.Location = new System.Drawing.Point(96, 69);
-            this.cbFadeOutCurve.Margin = new System.Windows.Forms.Padding(4);
-            this.cbFadeOutCurve.Name = "cbFadeOutCurve";
-            this.cbFadeOutCurve.Size = new System.Drawing.Size(98, 21);
-            this.cbFadeOutCurve.TabIndex = 5;
-            this.cbFadeOutCurve.Text = "Smooth";
+            this.cbxFadeOutCurve.Location = new System.Drawing.Point(96, 69);
+            this.cbxFadeOutCurve.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxFadeOutCurve.Name = "cbFadeOutCurve";
+            this.cbxFadeOutCurve.Size = new System.Drawing.Size(98, 21);
+            this.cbxFadeOutCurve.TabIndex = 5;
+            this.cbxFadeOutCurve.Text = "Smooth";
             // 
             // cbxChangeFadeOutCurveType
             // 
@@ -185,16 +185,16 @@
             // 
             // cbFadeOutTimecode
             // 
-            this.cbFadeOutTimecode.FormattingEnabled = true;
-            this.cbFadeOutTimecode.Items.AddRange(new object[] {
+            this.cbxFadeOutTimecode.FormattingEnabled = true;
+            this.cbxFadeOutTimecode.Items.AddRange(new object[] {
             "Frames",
             "Seconds"});
-            this.cbFadeOutTimecode.Location = new System.Drawing.Point(200, 17);
-            this.cbFadeOutTimecode.Margin = new System.Windows.Forms.Padding(4, 4, 8, 4);
-            this.cbFadeOutTimecode.Name = "cbFadeOutTimecode";
-            this.cbFadeOutTimecode.Size = new System.Drawing.Size(120, 21);
-            this.cbFadeOutTimecode.TabIndex = 1;
-            this.cbFadeOutTimecode.Text = "Frames";
+            this.cbxFadeOutTimecode.Location = new System.Drawing.Point(200, 17);
+            this.cbxFadeOutTimecode.Margin = new System.Windows.Forms.Padding(4, 4, 8, 4);
+            this.cbxFadeOutTimecode.Name = "cbFadeOutTimecode";
+            this.cbxFadeOutTimecode.Size = new System.Drawing.Size(120, 21);
+            this.cbxFadeOutTimecode.TabIndex = 1;
+            this.cbxFadeOutTimecode.Text = "Frames";
             // 
             // cbxFIReduceLength
             // 
@@ -226,8 +226,8 @@
             this.FadeInGroup.Controls.Add(this.cbxFadeInToZero);
             this.FadeInGroup.Controls.Add(this.nudFadeIn);
             this.FadeInGroup.Controls.Add(this.lbFadeInCurve);
-            this.FadeInGroup.Controls.Add(this.cbFadeInCurve);
-            this.FadeInGroup.Controls.Add(this.cbFadeInTimecode);
+            this.FadeInGroup.Controls.Add(this.cbxFadeInCurve);
+            this.FadeInGroup.Controls.Add(this.cbxFadeInTimecode);
             this.FadeInGroup.Controls.Add(this.cbxChangeFadeInCurveType);
             this.FadeInGroup.Location = new System.Drawing.Point(10, 33);
             this.FadeInGroup.Margin = new System.Windows.Forms.Padding(10, 10, 3, 3);
@@ -283,33 +283,33 @@
             // 
             // cbFadeInCurve
             // 
-            this.cbFadeInCurve.Enabled = false;
-            this.cbFadeInCurve.FormattingEnabled = true;
-            this.cbFadeInCurve.Items.AddRange(new object[] {
+            this.cbxFadeInCurve.Enabled = false;
+            this.cbxFadeInCurve.FormattingEnabled = true;
+            this.cbxFadeInCurve.Items.AddRange(new object[] {
             "Fast",
             "Linear",
             "Sharp",
             "Slow",
             "Smooth"});
-            this.cbFadeInCurve.Location = new System.Drawing.Point(96, 69);
-            this.cbFadeInCurve.Margin = new System.Windows.Forms.Padding(4);
-            this.cbFadeInCurve.Name = "cbFadeInCurve";
-            this.cbFadeInCurve.Size = new System.Drawing.Size(98, 21);
-            this.cbFadeInCurve.TabIndex = 5;
-            this.cbFadeInCurve.Text = "Smooth";
+            this.cbxFadeInCurve.Location = new System.Drawing.Point(96, 69);
+            this.cbxFadeInCurve.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxFadeInCurve.Name = "cbFadeInCurve";
+            this.cbxFadeInCurve.Size = new System.Drawing.Size(98, 21);
+            this.cbxFadeInCurve.TabIndex = 5;
+            this.cbxFadeInCurve.Text = "Smooth";
             // 
             // cbFadeInTimecode
             // 
-            this.cbFadeInTimecode.FormattingEnabled = true;
-            this.cbFadeInTimecode.Items.AddRange(new object[] {
+            this.cbxFadeInTimecode.FormattingEnabled = true;
+            this.cbxFadeInTimecode.Items.AddRange(new object[] {
             "Frames",
             "Seconds"});
-            this.cbFadeInTimecode.Location = new System.Drawing.Point(200, 17);
-            this.cbFadeInTimecode.Margin = new System.Windows.Forms.Padding(4, 4, 8, 4);
-            this.cbFadeInTimecode.Name = "cbFadeInTimecode";
-            this.cbFadeInTimecode.Size = new System.Drawing.Size(120, 21);
-            this.cbFadeInTimecode.TabIndex = 1;
-            this.cbFadeInTimecode.Text = "Frames";
+            this.cbxFadeInTimecode.Location = new System.Drawing.Point(200, 17);
+            this.cbxFadeInTimecode.Margin = new System.Windows.Forms.Padding(4, 4, 8, 4);
+            this.cbxFadeInTimecode.Name = "cbFadeInTimecode";
+            this.cbxFadeInTimecode.Size = new System.Drawing.Size(120, 21);
+            this.cbxFadeInTimecode.TabIndex = 1;
+            this.cbxFadeInTimecode.Text = "Frames";
             // 
             // cbxChangeFadeInCurveType
             // 
@@ -376,9 +376,9 @@
         private System.Windows.Forms.NumericUpDown nudFadeOut;
         private System.Windows.Forms.CheckBox cbxFadeOutToZero;
         private System.Windows.Forms.Label lbFadeOutCurve;
-        private System.Windows.Forms.ComboBox cbFadeOutCurve;
+        private System.Windows.Forms.ComboBox cbxFadeOutCurve;
         private System.Windows.Forms.CheckBox cbxChangeFadeOutCurveType;
-        private System.Windows.Forms.ComboBox cbFadeOutTimecode;
+        private System.Windows.Forms.ComboBox cbxFadeOutTimecode;
         private System.Windows.Forms.CheckBox cbxFIReduceLength;
         private System.Windows.Forms.CheckBox cbxFIAddLength;
         private System.Windows.Forms.GroupBox FadeInGroup;
@@ -386,8 +386,8 @@
         private System.Windows.Forms.CheckBox cbxFadeInToZero;
         private System.Windows.Forms.NumericUpDown nudFadeIn;
         private System.Windows.Forms.Label lbFadeInCurve;
-        private System.Windows.Forms.ComboBox cbFadeInCurve;
-        private System.Windows.Forms.ComboBox cbFadeInTimecode;
+        private System.Windows.Forms.ComboBox cbxFadeInCurve;
+        private System.Windows.Forms.ComboBox cbxFadeInTimecode;
         private System.Windows.Forms.CheckBox cbxChangeFadeInCurveType;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btRun;
