@@ -7,25 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ScriptPortal.Vegas;
+using VegasProData;
 
 namespace Lyricer
 {
     public partial class MainForm : UserControl
     {
-        //Vegas myVegas;
-        Random random;
+        Random random = new Random();
 
         public MainForm(Vegas vegas)
         {
             Data.Vegas = vegas;
-            random = new Random();
             InitializeComponent();
         }
 
         /// <summary>
         /// Event Handlers
         /// </summary>
-        // Automatically count the number of tracks on myVegas.TrackCountChanged
+        // Automatically count the number of tracks on Vegas.TrackCountChanged
         public void HandleTrackCountChange(object sender, EventArgs e)
         {
             CountTracks();
@@ -47,13 +46,13 @@ namespace Lyricer
             int vidTracks = 0;
             int audTracks = 0;
 
-            foreach (Track track in Data.Vegas.Project.Tracks)
+            foreach (Track track in Data.Tracks)
             {
                 if (track.IsVideo()) vidTracks++;
                 else audTracks++;
             }
 
-            lblTracks.Text = $"Tracks: {Data.Vegas.Project.Tracks.Count}";
+            lblTracks.Text = $"Tracks: {Data.Tracks.Count}";
             lblVideo.Text = $"Video tracks: {vidTracks}";
             lblAudio.Text = $"Audio tracks: {audTracks}";
         }
@@ -114,7 +113,7 @@ namespace Lyricer
         {
             using (UndoBlock undo = new UndoBlock("Add Effect"))
             {
-                if (Data.SelectedMedias.Count == 0) return;
+                if (Data.SelectedMedias.Count() == 0) return;
 
                 PlugInNode plugIn = Data.VideoFx.FirstOrDefault(x => x.Name.ToLower().Contains("s_shake"));
                 if (plugIn == null) return;
@@ -146,7 +145,7 @@ namespace Lyricer
 
         private void btnCreateText_Click(object sender, EventArgs e)
         {
-            // Don't forget UndoBlock if you don't want to suffer for hours
+            /// Don't forget UndoBlock if you don't want to suffer for hours
             using (UndoBlock undo = new UndoBlock($"Create Text {txtNewText.Text}"))
             {
                 // get the Tiles & Text media generator
@@ -189,60 +188,6 @@ namespace Lyricer
                 // make sure all the changes get applied
                 ofx.AllParametersChanged();
             }
-        }
-
-        public List<PlugInNode> _VideoFx => SearchIn(Data.VideoFx);
-        public List<PlugInNode> _AudioFX => SearchIn(Data.AudioFX);
-        public List<PlugInNode> _Generators => SearchIn(Data.Generators);
-        public List<PlugInNode> _Transitions => SearchIn(Data.Transitions);
-        public List<PlugInNode> _SearchResult => _VideoFx.Concat(_AudioFX).Concat(_Generators).Concat(_Transitions).ToList();
-        public List<PlugInNode> SearchIn(List<PlugInNode> list)
-        {
-            return list.Where(x => x.Name.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
-        }
-
-        /// <summary>
-        /// INITIATE DEEP SEARCH
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtSearch_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) { Search(); return; }
-        }
-        private void ClearSearchResults()
-        {
-            if (listSearchResult.Items.Count > 0) listSearchResult.Items.Clear();
-        }
-        private void Search()
-        {
-            ClearSearchResults();
-            if (_VideoFx.Count != 0) AddItemsToSearchResults(_VideoFx, "V");
-            if (_AudioFX.Count != 0) AddItemsToSearchResults(_AudioFX, "A");
-            if (_Generators.Count != 0) AddItemsToSearchResults(_Generators, "G");
-            if (_Transitions.Count != 0) AddItemsToSearchResults(_Transitions, "T");
-        }
-        private void AddItemsToSearchResults(List<PlugInNode> list, string prefix)
-        {
-            foreach (var item in list.Where(x => !x.IsContainer).ToList())
-            {
-                listSearchResult.Items.Add($"{prefix}: {item.Name}");
-            }
-        }
-
-        /// <summary>
-        /// Apply Video or Audio Effect / Transition or generate Generator 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void listSearchResult_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            var selectedItem = _SearchResult[listSearchResult.SelectedIndex];
-
-            // add button/s for different things i guess
-            // - apply effect / transition to selected object
-            //   > transition - in or out radio buttons?
-            // - create generator
         }
     }
 }

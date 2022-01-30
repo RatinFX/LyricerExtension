@@ -35,8 +35,6 @@
             this.btnAddAudioTrack = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabMain = new System.Windows.Forms.TabPage();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.listSearchResult = new System.Windows.Forms.ListBox();
             this.txtNewText = new System.Windows.Forms.TextBox();
             this.lblCustomFadesAbout = new System.Windows.Forms.LinkLabel();
             this.btnCreateText = new System.Windows.Forms.Button();
@@ -119,8 +117,6 @@
             // 
             this.tabMain.AutoScroll = true;
             this.tabMain.BackColor = System.Drawing.Color.White;
-            this.tabMain.Controls.Add(this.txtSearch);
-            this.tabMain.Controls.Add(this.listSearchResult);
             this.tabMain.Controls.Add(this.txtNewText);
             this.tabMain.Controls.Add(this.lblCustomFadesAbout);
             this.tabMain.Controls.Add(this.btnCreateText);
@@ -137,23 +133,6 @@
             this.tabMain.Size = new System.Drawing.Size(792, 428);
             this.tabMain.TabIndex = 0;
             this.tabMain.Text = "Main";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(156, 186);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(218, 20);
-            this.txtSearch.TabIndex = 12;
-            this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyUp);
-            // 
-            // listSearchResult
-            // 
-            this.listSearchResult.FormattingEnabled = true;
-            this.listSearchResult.Location = new System.Drawing.Point(156, 212);
-            this.listSearchResult.Name = "listSearchResult";
-            this.listSearchResult.Size = new System.Drawing.Size(218, 199);
-            this.listSearchResult.TabIndex = 11;
-            this.listSearchResult.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listSearchResult_MouseDoubleClick);
             // 
             // txtNewText
             // 
@@ -305,7 +284,5 @@
         private EaseAutomator easeAutomator;
         private System.Windows.Forms.LinkLabel lblCustomFadesAbout;
         private System.Windows.Forms.TextBox txtNewText;
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.ListBox listSearchResult;
     }
 }

@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyricer", "Lyricer\Lyricer.csproj", "{409527D9-3390-4068-972B-B9859A50894D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VegasProData", "..\VegasProData\VegasProData\VegasProData.csproj", "{24124171-3918-4BF5-A07C-3E00807B7134}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{409527D9-3390-4068-972B-B9859A50894D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{409527D9-3390-4068-972B-B9859A50894D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{409527D9-3390-4068-972B-B9859A50894D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24124171-3918-4BF5-A07C-3E00807B7134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24124171-3918-4BF5-A07C-3E00807B7134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24124171-3918-4BF5-A07C-3E00807B7134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24124171-3918-4BF5-A07C-3E00807B7134}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
