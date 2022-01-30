@@ -8,100 +8,172 @@ using System.Text;
 using System.Windows.Forms;
 //using Sony.Vegas;
 using ScriptPortal.Vegas;
+using VegasProData;
 
 namespace Lyricer
 {
     public partial class EaseAutomator : UserControl
     {
-        int videoEvents = 0;
-        int audioEvents = 0;
+        public TrackEvent SelectedMedia { get; set; }
+
+        /// <summary>
+        /// List of Media Effects
+        /// </summary>
+        private List<Effect> _selectedMediaEffects = new List<Effect>();
+        public Effect SelectedEffect => _selectedMediaEffects[listSelectedMediaEffects.SelectedIndex];
+
+        /// <summary>
+        /// (OFXParameter) Properties
+        /// </summary>
+        private List<object> _selectedEffectProperties = new List<object>();
+        public object SelectedEffectProperty => _selectedEffectProperties[listSelectedEffectProperties.SelectedIndex];
+
+        public static List<OFXParameterType> IgnoredParameterTypes = new List<OFXParameterType>() {
+            //OFXParameterType.Choice,
+            OFXParameterType.Custom,
+            //OFXParameterType.Group,
+            OFXParameterType.Page,
+            OFXParameterType.PushButton,
+            OFXParameterType.Unknown
+        };
+
         public EaseAutomator()
         {
             InitializeComponent();
         }
 
-        public void SetMediaCountTexts()
+        /// <summary>
+        /// Empty the list of effects
+        /// </summary>
+        private void ClearEffectList()
         {
-            lblSelectedVideoMediaCount.Text = $"Selected Video Media count: {videoEvents}";
-            lblSelectedAudioMediaCount.Text = $"Selected Audio Media count: {audioEvents}";
+            if (listSelectedMediaEffects.Items.Count > 0) listSelectedMediaEffects.Items.Clear();
+            if (SelectedMedia != null) SelectedMedia = null;
+            if (_selectedMediaEffects != null && _selectedMediaEffects.Count > 0) _selectedMediaEffects.Clear();
         }
 
-        // TODO: Separate to better methods
+        private void ClearEffectPropList()
+        {
+            if (listSelectedEffectProperties.Items.Count > 0) listSelectedEffectProperties.Items.Clear();
+            if (_selectedEffectProperties != null && _selectedEffectProperties.Count > 0) _selectedEffectProperties.Clear();
+        }
+
         /// <summary>
         /// Handle selected media changes
         /// </summary>
         public void HandleTrackEventStateChanged(object sender, EventArgs e)
         {
             if (!cbxWatchSelectedMedia.Checked) return;
-            listSelectedMediaEffects.Items.Clear();
-            listSelectedMedia.Items.Clear();
-            videoEvents = audioEvents = 0;
 
-            List<TrackEvent> selectedEvents = Methods.GetSelectedEvents(Data.Vegas.Project.Tracks);
-            if (selectedEvents.Count == 0)
-            {
-                SetMediaCountTexts();
-                return;
-            }
+            ClearEffectList();
+            ClearEffectPropList();
+            if (Data.SelectedMedias.Count() == 0) return;
 
-            foreach (TrackEvent selected in selectedEvents)
+            SelectedMedia = Data.SelectedMedias.FirstOrDefault();
+            if (SelectedMedia == null) throw new Exception("Failed to get the selected event.");
+
+            CastSelectedMedia();
+            SelectFirstEffect();
+        }
+
+        /// <summary>
+        /// Cast selected media to the correct Video / Audio Event type
+        /// </summary>
+        /// <param name="index">track event index</param>
+        /// <param name="effects">list of effect</param>
+        private void CastSelectedMedia()
+        {
+            if (SelectedMedia.IsVideo())
             {
-                if (selected.IsVideo())
-                {
-                    // TODO: get a better name than ActiveTake.Name
-                    listSelectedMedia.Items.Add($"{selected.Track.Index}-{selected.Index}", $"Video: {selected.ActiveTake.Name}", videoEvents);
-                    videoEvents++;
-                }
-                else
-                {
-                    listSelectedMedia.Items.Add($"{selected.Track.Index}-{selected.Index}", $"Autio: {selected.ActiveTake.Name}", audioEvents);
-                    audioEvents++;
-                }
+                var s = (VideoEvent)SelectedMedia;
+                AddEffectsToList(s.Effects);
             }
-            SetMediaCountTexts();
-            listSelectedMedia.Items[0].Selected = true;
-            listSelectedMedia_SelectedIndexChanged(sender, e);
+            else
+            {
+                var s = (AudioEvent)SelectedMedia;
+                AddEffectsToList(s.Effects);
+            }
         }
 
         /// <summary>
         /// Add the Selected Media's effects to listSelectedMediaEffects
         /// </summary>
-        /// <param name="index">track event index</param>
-        /// <param name="effects">list of effect</param>
-        public void ListEffects(int index, Effects effects)
+        /// <param name="effects">Effects on the selected media</param>
+        private void AddEffectsToList(Effects effects)
         {
             if (effects.Count == 0) return;
             foreach (var effect in effects)
             {
-                listSelectedMediaEffects.Items.Add($"{index}-{effect.Index}", $"FX: {effect.Description}", index);
+                listSelectedMediaEffects.Items.Add($"{effect.Index + 1}: {effect.Description}");
+                _selectedMediaEffects.Add(effect);
             }
         }
 
         /// <summary>
-        /// Selecting a Media from the main list
+        /// Select the first effect found on the SelectedMedia
         /// </summary>
-        private void listSelectedMedia_SelectedIndexChanged(object sender, EventArgs e)
+        private void SelectFirstEffect()
         {
-            if (listSelectedMedia.SelectedItems.Count == 0) return;
+            if (listSelectedMediaEffects.Items.Count == 0) return;
+            listSelectedMediaEffects.SelectedItem = listSelectedMediaEffects.Items[0];
 
-            var split = listSelectedMedia.SelectedItems[0].Name.Split('-');
-            if (split == null || split.Length != 2) throw new Exception("Selected Media naming error.");
+            ListEffectProps();
+        }
 
-            int trackIndex = int.Parse(split[0]);
-            int eventIndex = int.Parse(split[1]);
-            var selected = Data.Vegas.Project.Tracks[trackIndex].Events[eventIndex];
-            if (selected == null) throw new Exception("Failed to get the selected event.");
 
-            if (selected.IsVideo())
+        /// <summary>
+        /// List the properties from the selected effect
+        /// </summary>
+        private void ListEffectProps()
+        {
+            ClearEffectPropList();
+            if (SelectedEffect == null) throw new Exception("Failed to get the first effect.");
+            if (!SelectedEffect.IsOFX) return;
+
+            foreach (var item in SelectedEffect.OFXEffect.Parameters)
             {
-                var s = (VideoEvent)selected;
-                ListEffects(s.Index, s.Effects);
-            }
-            else
-            {
-                var s = (AudioEvent)selected;
-                ListEffects(s.Index, s.Effects);
+                if (IgnoredParameterTypes.Contains(item.ParameterType) || item.Label == null) continue;
+                if (item.ParameterType == OFXParameterType.Group)
+                {
+                    listSelectedEffectProperties.Items.Add($"▶ {item.Label}");
+                }
+                else
+                {
+                    if (item.ParentName == "")
+                    {
+                        listSelectedEffectProperties.Items.Add($"{item.Name}");
+                    }
+                    else
+                    {
+                        listSelectedEffectProperties.Items.Add($"    | - {item.Name}");
+                    }
+                }
+                _selectedEffectProperties.Add(item);
             }
         }
+
+        private void listSelectedMediaEffects_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListEffectProps();
+        }
+
+        private void listSelectedEffectProperties_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // TODO
+        }
+
+        private void cbxEaseCurveTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedItem = string.Join("", cbxEaseCurveTypes.SelectedItem.ToString().Split(' '));
+
+        }
+
+        private void cbxEaseType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedItem = string.Join("", cbxEaseTypes.SelectedItem.ToString().Split(' '));
+
+        }
+
+        // watch checkbox -> load selected if it exists
     }
 }
