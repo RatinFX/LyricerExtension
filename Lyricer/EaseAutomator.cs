@@ -120,7 +120,6 @@ namespace Lyricer
             ListEffectProps();
         }
 
-
         /// <summary>
         /// List the properties from the selected effect
         /// </summary>

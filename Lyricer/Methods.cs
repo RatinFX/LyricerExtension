@@ -11,36 +11,6 @@ namespace Lyricer
         //public static FileStream LogStream;
         //public static StreamWriter LogWriter;
 
-        /// <summary>
-        /// Get selected TrackEvents from the timeline
-        /// </summary>
-        /// <param name="tracks">Vegas.Project.Tracks</param>
-        /// <returns></returns>
-        public static List<TrackEvent> GetSelectedEvents(Tracks tracks)
-        /// UNUSED -> use Data.SelectedMedias
-        {
-            // if we're gonna change the timecode of the Event,
-            // it's recommended to put it in a new Array/List
-            // so it won't update and mess up the Event order
-            List<TrackEvent> selectedList = new List<TrackEvent>();
-
-            foreach (Track track in tracks)
-            {
-                foreach (TrackEvent trackEvent in track.Events)
-                {
-                    if (!trackEvent.Selected) continue;
-                    selectedList.Add(trackEvent);
-                }
-            }
-            return selectedList;
-        }
-
-
-
-
-
-
-
 
 
 
@@ -54,7 +24,7 @@ namespace Lyricer
         /// Setting parameters
         /// </summary>
 
-        /// TODO: figure out how to make this shit generic
+        /// TODO: figure out how to make these generic
         // Did not work as expected:
         // - SetParameter<T>(...)
         // - where T : OFXParameter<T, OFXKeyframe<T>>
@@ -64,131 +34,131 @@ namespace Lyricer
         /// bool + animated
         public static void SetParameterBool(OFXEffect ofx, string param, bool value)
         {
-            var ofxParam = (OFXBooleanParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXBooleanParameter;
             ofxParam.IsAnimated = false;
             ofxParam.Value = value;
         }
         public static void SetParameterBool(OFXEffect ofx, string param, bool value, Timecode timecode)
         {
-            var ofxParam = (OFXBooleanParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXBooleanParameter;
             if (!ofxParam.IsAnimated) ofxParam.IsAnimated = true;
             ofxParam.SetValueAtTime(timecode, value);
         }
         /// choice + animated
         public static void SetParameterChoice(OFXEffect ofx, string param, OFXChoice value)
         {
-            var ofxParam = (OFXChoiceParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXChoiceParameter;
             ofxParam.IsAnimated = false;
             if (value != null) ofxParam.Value = value;
         }
         public static void SetParameterChoice(OFXEffect ofx, string param, OFXChoice value, Timecode timecode)
         {
-            var ofxParam = (OFXChoiceParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXChoiceParameter;
             if (!ofxParam.IsAnimated) ofxParam.IsAnimated = true;
             ofxParam.SetValueAtTime(timecode, value);
         }
         /// color + animated
         public static void SetParameterColor(OFXEffect ofx, string param, string value)
         {
-            var ofxParam = (OFXCustomParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXCustomParameter;
             ofxParam.IsAnimated = false;
             ofxParam.Value = value;
         }
         public static void SetParameterColor(OFXEffect ofx, string param, string value, Timecode timecode)
         {
-            var ofxParam = (OFXCustomParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXCustomParameter;
             if (!ofxParam.IsAnimated) ofxParam.IsAnimated = true;
             ofxParam.SetValueAtTime(timecode, value);
         }
         /// double 2D + animated
         public static void SetParameterDouble2D(OFXEffect ofx, string param, OFXDouble2D value)
         {
-            var ofxParam = (OFXDouble2DParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXDouble2DParameter;
             ofxParam.IsAnimated = false;
             ofxParam.Value = value;
         }
         public static void SetParameterDouble2D(OFXEffect ofx, string param, OFXDouble2D value, Timecode timecode)
         {
-            var ofxParam = (OFXDouble2DParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXDouble2DParameter;
             if (!ofxParam.IsAnimated) ofxParam.IsAnimated = true;
             ofxParam.SetValueAtTime(timecode, value);
         }
         /// double 3D + animated
         public static void SetParameterDouble3D(OFXEffect ofx, string param, OFXDouble3D value)
         {
-            var ofxParam = (OFXDouble3DParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXDouble3DParameter;
             ofxParam.IsAnimated = false;
             ofxParam.Value = value;
         }
         public static void SetParameterDouble3D(OFXEffect ofx, string param, OFXDouble3D value, Timecode timecode)
         {
-            var ofxParam = (OFXDouble3DParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXDouble3DParameter;
             if (!ofxParam.IsAnimated) ofxParam.IsAnimated = true;
             ofxParam.SetValueAtTime(timecode, value);
         }
         /// double + animated
         public static void SetParameterDouble(OFXEffect ofx, string param, double value)
         {
-            var ofxParam = (OFXDoubleParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXDoubleParameter;
             ofxParam.IsAnimated = false;
             ofxParam.Value = value;
         }
         public static void SetParameterDouble(OFXEffect ofx, string param, double value, Timecode timecode)
         {
-            var ofxParam = (OFXDoubleParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXDoubleParameter;
             if (!ofxParam.IsAnimated) ofxParam.IsAnimated = true;
             ofxParam.SetValueAtTime(timecode, value);
         }
         /// int 2D + animated
         public static void SetParameterInt2D(OFXEffect ofx, string param, OFXInteger2D value)
         {
-            var ofxParam = (OFXInteger2DParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXInteger2DParameter;
             ofxParam.IsAnimated = false;
             ofxParam.Value = value;
         }
         public static void SetParameterInt2D(OFXEffect ofx, string param, OFXInteger2D value, Timecode timecode)
         {
-            var ofxParam = (OFXInteger2DParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXInteger2DParameter;
             if (!ofxParam.IsAnimated) ofxParam.IsAnimated = true;
             ofxParam.SetValueAtTime(timecode, value);
         }
         /// int 3D + animated
         public static void SetParameterInt3D(OFXEffect ofx, string param, OFXInteger3D value)
         {
-            var ofxParam = (OFXInteger3DParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXInteger3DParameter;
             ofxParam.IsAnimated = false;
             ofxParam.Value = value;
         }
         public static void SetParameterInt3D(OFXEffect ofx, string param, OFXInteger3D value, Timecode timecode)
         {
-            var ofxParam = (OFXInteger3DParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXInteger3DParameter;
             if (!ofxParam.IsAnimated) ofxParam.IsAnimated = true;
             ofxParam.SetValueAtTime(timecode, value);
         }
         /// int + animated
         public static void SetParameterInt(OFXEffect ofx, string param, int value)
         {
-            var ofxParam = (OFXIntegerParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXIntegerParameter;
             ofxParam.IsAnimated = false;
             ofxParam.Value = value;
         }
         public static void SetParameterInt(OFXEffect ofx, string param, int value, Timecode timecode)
         {
-            var ofxParam = (OFXIntegerParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXIntegerParameter;
             if (!ofxParam.IsAnimated) ofxParam.IsAnimated = true;
             ofxParam.SetValueAtTime(timecode, value);
         }
         /// RGBA + animated
         public static void SetParameterRGBA(OFXEffect ofx, string param, double r, double g, double b, double a)
         {
-            var ofxParam = (OFXRGBAParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXRGBAParameter;
             var color = new OFXColor(r, g, b, a);
             ofxParam.IsAnimated = false;
             ofxParam.Value = color;
         }
         public static void SetParameterRGBA(OFXEffect ofx, string param, double r, double g, double b, double a, Timecode timecode)
         {
-            var ofxParam = (OFXRGBAParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXRGBAParameter;
             var color = new OFXColor(r, g, b, a);
             if (!ofxParam.IsAnimated) ofxParam.IsAnimated = true;
             ofxParam.SetValueAtTime(timecode, color);
@@ -209,7 +179,7 @@ namespace Lyricer
         }
         public static void SetParameterRGB(OFXEffect ofx, string param, OFXColor color)
         {
-            var ofxParam = (OFXRGBParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXRGBParameter;
             ofxParam.IsAnimated = false;
             ofxParam.Value = color;
         }
@@ -220,7 +190,7 @@ namespace Lyricer
         }
         public static void SetParameterRGB(OFXEffect ofx, string param, OFXColor color, Timecode timecode)
         {
-            var ofxParam = (OFXRGBParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXRGBParameter;
             if (!ofxParam.IsAnimated) ofxParam.IsAnimated = true;
             ofxParam.SetValueAtTime(timecode, color);
         }
@@ -229,13 +199,13 @@ namespace Lyricer
         /// </summary>
         public static void SetParameterString(OFXEffect ofx, string param, string value)
         {
-            var ofxParam = (OFXStringParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXStringParameter;
             ofxParam.IsAnimated = false;
             ofxParam.Value = value;
         }
         public static void SetParameterString(OFXEffect ofx, string param, string value, Timecode timecode)
         {
-            var ofxParam = (OFXStringParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXStringParameter;
             if (!ofxParam.IsAnimated) ofxParam.IsAnimated = true;
             ofxParam.SetValueAtTime(timecode, value);
         }
@@ -244,7 +214,7 @@ namespace Lyricer
         /// </summary>
         public static void SetParameterRichText(OFXEffect ofx, string param, string value)
         {
-            var ofxParam = (OFXStringParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXStringParameter;
             RichTextBox rtfText = new RichTextBox
             {
                 Rtf = ofxParam.Value,
@@ -255,7 +225,7 @@ namespace Lyricer
         }
         public static void SetParameterRichText(OFXEffect ofx, string param, string value, Timecode timecode)
         {
-            var ofxParam = (OFXStringParameter)ofx[param];
+            var ofxParam = ofx[param] as OFXStringParameter;
             RichTextBox rtfText = new RichTextBox
             {
                 Rtf = ofxParam.Value,
@@ -264,35 +234,5 @@ namespace Lyricer
             if (!ofxParam.IsAnimated) ofxParam.IsAnimated = true;
             ofxParam.SetValueAtTime(timecode, rtfText.Rtf);
         }
-
-
-
-
-
-
-
-
-
-        /// <summary>
-        /// Set the preset of an effect by name
-        /// </summary>
-        /// <param name="effect">Effect</param>
-        /// <param name="name">Preset name</param>
-        public static void SetPreset(Effect effect, string name)
-        {
-            var preset = effect.Presets.FirstOrDefault(x => x.Name == name)?.Name;
-            if (preset != null || preset != "") effect.Preset = preset;
-        }
-        /// <summary>
-        /// Set the preset of an effect by index
-        /// </summary>
-        /// <param name="effect">Effect</param>
-        /// <param name="index">Preset index</param>
-        public static void SetPreset(Effect effect, int index)
-        {
-            effect.Preset = effect.Presets[index].Name;
-        }
-
-
     }
 }

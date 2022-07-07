@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VegasProData;
 
 namespace Lyricer
 {
@@ -18,32 +19,32 @@ namespace Lyricer
         static string fullText = "";
 
         // TODO: try separating them to different files
-        public static void GetEffects(Vegas myVegas, bool isSeparate = false)
+        public static void GetEffects(bool isSeparate = false)
         {
             /// Get Audio Effects
             // ToText("Audio Effects");
             NewSection("Audio Effects");
-            CheckListItems(myVegas.AudioFX, true);
+            CheckListItems(Data.AudioFX, isAudio: true);
 
             /// Get Video Effects
             // ToText("Video Effects");
             NewSection("Video Effects");
-            CheckListItems(myVegas.VideoFX, false, true);
+            CheckListItems(Data.VideoFX, moreVideoChecks: true);
 
             /// Get Generators
             // ToText("Generators");
             NewSection("Generators");
-            CheckListItems(myVegas.Generators);
+            CheckListItems(Data.Generators);
 
             /// Get Transitions
             // ToText("Transitions");
             NewSection("Transitions");
-            CheckListItems(myVegas.Transitions);
+            CheckListItems(Data.Transitions);
 
             /// Get Renderers
             // ToText("Renderers");
             NewSection("Renderers");
-            foreach (Renderer renderer in myVegas.Renderers)
+            foreach (var renderer in Data.Vegas.Renderers)
             {
                 if (renderer == null) continue;
 
@@ -74,20 +75,20 @@ namespace Lyricer
         /// <param name="list">List to look through</param>
         /// <param name="isAudio">Does the List contains AudioFX</param>
         /// <param name="moreVideoChecks">Use the additional checks for VideoFX</param>
-        public static void CheckListItems(PlugInNode list, bool isAudio = false, bool moreVideoChecks = false)
+        public static void CheckListItems(IEnumerable<ExtendedPlugInNode> list, bool isAudio = false, bool moreVideoChecks = false)
         {
-            foreach (PlugInNode fx in list)
+            foreach (var fx in list)
             {
-                if (fx == null) continue;
-                if (isAudio && (!fx.IsAudio || fx.IsContainer || fx.IsPackage)) continue;
-                if (moreVideoChecks && (!fx.IsVideo || fx.IsContainer || fx.IsPackage)) continue;
+                if (fx == null || fx.Plugin == null ||
+                   (isAudio && !fx.IsAudioFX) ||
+                   (moreVideoChecks && !fx.IsVideoFX)) continue;
 
                 var index = 0;
-                var baseLine = $"{fx.Name} - {fx.ClassID}";
+                var baseLine = $"{fx.Name} - {fx.Plugin.ClassID}";
 
-                if (!isAudio) baseLine += $" - UID: {fx.UniqueID} - isOFX: {fx.IsOFX}";
+                if (!isAudio) baseLine += $" - UID: {fx.Plugin.UniqueID} - isOFX: {fx.Plugin.IsOFX}";
 
-                foreach (EffectPreset preset in fx.Presets)
+                foreach (var preset in fx.Plugin.Presets)
                 {
                     if (preset == null) continue;
 

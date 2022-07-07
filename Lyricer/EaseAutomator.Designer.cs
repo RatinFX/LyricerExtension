@@ -66,9 +66,9 @@
             this.cbxWatchSelectedMedia.Location = new System.Drawing.Point(10, 10);
             this.cbxWatchSelectedMedia.Margin = new System.Windows.Forms.Padding(10);
             this.cbxWatchSelectedMedia.Name = "cbxWatchSelectedMedia";
-            this.cbxWatchSelectedMedia.Size = new System.Drawing.Size(135, 17);
+            this.cbxWatchSelectedMedia.Size = new System.Drawing.Size(173, 17);
             this.cbxWatchSelectedMedia.TabIndex = 2;
-            this.cbxWatchSelectedMedia.Text = "Watch Selected Media";
+            this.cbxWatchSelectedMedia.Text = "Update Selected Media effects";
             this.cbxWatchSelectedMedia.UseVisualStyleBackColor = true;
             // 
             // grpSelectedMediaEffectsGroup

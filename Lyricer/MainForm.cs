@@ -13,7 +13,7 @@ namespace Lyricer
 {
     public partial class MainForm : UserControl
     {
-        Random random = new Random();
+        Random Random = new Random();
 
         public MainForm(Vegas vegas)
         {
@@ -115,7 +115,7 @@ namespace Lyricer
             {
                 if (Data.SelectedMedias.Count() == 0) return;
 
-                PlugInNode plugIn = Data.VideoFx.FirstOrDefault(x => x.Name.ToLower().Contains("s_shake"));
+                PlugInNode plugIn = Data.VideoFX.FirstOrDefault(x => x.Name.ToLower().Contains("s_shake"))?.Plugin;
                 if (plugIn == null) return;
 
                 foreach (TrackEvent trackEvent in Data.SelectedMedias)
@@ -132,15 +132,15 @@ namespace Lyricer
                     if (!effect.PlugIn.IsOFX) continue;
                     OFXEffect ofx = effect.OFXEffect;
                     Methods.SetParameterDouble(ofx, "Z Dist", 2);
-                    Methods.SetParameterDouble(ofx, "Tilt Rand Amp", random.NextDouble() * 69);
-                    Methods.SetParameterDouble(ofx, "Seed", random.NextDouble() * 5);
+                    Methods.SetParameterDouble(ofx, "Tilt Rand Amp", Random.NextDouble() * 69);
+                    Methods.SetParameterDouble(ofx, "Seed", Random.NextDouble() * 5);
                 }
             }
         }
 
         private void btnGetEffects_Click(object sender, EventArgs e)
         {
-            GetEffectsGUID.GetEffects(Data.Vegas, true);
+            GetEffectsGUID.GetEffects(true);
         }
 
         private void btnCreateText_Click(object sender, EventArgs e)
