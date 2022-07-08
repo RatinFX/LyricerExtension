@@ -1,7 +1,6 @@
-﻿using System;
+﻿using ScriptPortal.Vegas;
+using System;
 using System.Windows.Forms;
-//using Sony.Vegas;
-using ScriptPortal.Vegas;
 using VegasProData;
 
 namespace Lyricer
