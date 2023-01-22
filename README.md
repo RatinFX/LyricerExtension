@@ -15,5 +15,4 @@ Add the correct VEGAS Pro API: `ScriptPortal.Vegas.dll` (14 or after) or `Sony.V
 This uses my [VegasProData](https://github.com/RatinA0/VegasProData) variable collection to make my life easier
 
 ## TODO:
-- [ ] Add [BetterSearch](https://github.com/RatinA0/BetterSearch/) ?
-- [ ] EaseAutomator
+- [ ] Remove every added extension / script, rethink the purpose of this project
