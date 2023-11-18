@@ -1,5 +1,5 @@
 # Lyricer
-VEGAS Pro Extension for the lyrics people who still use this damn software
+- Experimental VEGAS Pro Extension for the lyrics people who still use this software
 ![](preview.png)
 
 
